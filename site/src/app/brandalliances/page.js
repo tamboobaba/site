@@ -247,7 +247,7 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
             <span className="text-yellow-400">Brand</span> Alliances
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Let's create something extraordinary together. Fill out this form to explore partnership opportunities.
+            Let&apos create something extraordinary together. Fill out this form to explore partnership opportunities.
           </p>
         </div>
 
@@ -310,7 +310,7 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
               {/* Contact Person */}
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Contact Person's Name <span className="text-yellow-400">*</span>
+                  Contact Person&apos Name <span className="text-yellow-400">*</span>
                 </label>
                 <div className="relative">
                   <input
