@@ -27,8 +27,8 @@ export function Footer() {
         <span className="font-semibold text-yellow-400 mb-1">Connect with us</span>
         <div className="flex gap-4 text-2xl">
           <a href="https://www.instagram.com/tamboobaba/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400"><FiInstagram /></a>
-          // <a href="https://twitter.com/tamboobaba" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400"><FiTwitter /></a>
-          // <a href="https://www.linkedin.com/company/tamboobaba" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400"><FiLinkedin /></a>
+  { <a href="https://twitter.com/tamboobaba" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400"><FiTwitter /></a>}
+  { <a href="https://www.linkedin.com/company/tamboobaba" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400"><FiLinkedin /></a>}
         </div>
         <div className="mt-2 text-xs text-gray-500">
           &copy; {new Date().getFullYear()} Tamboo Baba. All rights reserved.
