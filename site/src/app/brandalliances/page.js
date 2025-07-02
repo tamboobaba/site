@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { FiMail, FiPhone, FiUser, FiGlobe, FiUpload, FiCheck, FiX } from 'react-icons/fi';
 import { toast } from 'react-toastify';
+import Image from 'next/image';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function BrandAlliances() {
@@ -229,12 +230,15 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
 )}
       {/* "min-h-screen bg-gradient-to-br from-yellow-900 via-gray-950 to-black text-white py-12 px-4 sm:px-6 lg:px-8" */}
       <div className="flex flex-col items-center mb-8">
-          <img
+          <Image
             src="/logo.png"
             alt="Tamboo Baba Logo"
+            width={128}
+            height={128}
             className="w-32 h-32 object-contain mb-2 drop-shadow-lg"
             style={{ filter: 'drop-shadow(0 0 8px #FFD600)' }}
           />
+
           {/* <h1 className="text-4xl font-extrabold text-yellow-400 tracking-wide mb-1">
             Tamboo Baba
           </h1>
@@ -491,7 +495,7 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
             {/* Timeframe */}
             <div>
               <label className="block text-sm font-medium mb-2">
-                Is there a specific timeframe or event you're targeting?
+                Is there a specific timeframe or event you&aposre targeting?
               </label>
               <input
                 type="text"
@@ -580,7 +584,7 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
             {/* Additional Message */}
             <div>
               <label className="block text-sm font-medium mb-2">
-                Any additional message or proposal you'd like to share?
+                Any additional message or proposal you&aposd like to share?
               </label>
               <textarea
                 name="additionalMessage"
@@ -657,7 +661,7 @@ const [showSuccessModal, setShowSuccessModal] = useState(false);
         </button>
       </div>
       <p className="text-gray-300 mb-4">
-        We've sent a 6-digit OTP to <span className="font-medium">{formData.email}</span>. Please enter it below:
+        We&aposve sent a 6-digit OTP to <span className="font-medium">{formData.email}</span>. Please enter it below:
       </p>
       {/* Show OTP Error Here */}
       {otpError && (
