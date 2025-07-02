@@ -55,22 +55,44 @@ export async function POST(request) {
       maxMessages: 5
     });
 
-    await transporter.sendMail({
-      from: `"Tamboo Baba" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: 'Your OTP for Brand Alliance Verification',
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #f59e0b;">Tamboo Baba Brand Alliance Verification</h2>
-          <p>Your OTP code is:</p>
-          <h1 style="font-size: 2.5rem; color: #f59e0b; letter-spacing: 0.5rem;">${otp}</h1>
-          <p>This code will expire in 15 minutes.</p>
-          <p>If you didn't request this, please ignore this email.</p>
-          <hr style="border: 1px solid #ddd; margin: 20px 0;">
-          <p style="color: #777;">Tamboo Baba Event Management</p>
+await transporter.sendMail({
+  from: `"Tamboo Baba" <${process.env.EMAIL_USER}>`,
+  to: email,
+  subject: 'Your OTP for Brand Alliance Verification',
+  html: `
+  <div style="font-family: 'Segoe UI', Arial, sans-serif; background: #18181b; color: #fff; max-width: 480px; margin: 0 auto; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 24px #0003;">
+    <!-- Header -->
+    <div style="background: linear-gradient(90deg, #f59e0b 0%, #111827 100%); padding: 28px 0 18px 0; text-align: center;">
+      <img src="https://tamboobaba.com/hero-image.png" alt="Tamboo Baba Logo" style="height: 54px; margin-bottom: 10px;" />
+      <h2 style="color: #fff; font-size: 1.5rem; font-weight: bold; margin: 0;">Brand Alliance Email Verification</h2>
+    </div>
+    <!-- Body -->
+    <div style="padding: 32px 28px 24px 28px; background: #23232a;">
+      <p style="color: #fde68a; font-size: 1.08rem; margin-bottom: 18px;">
+        Your One-Time Password (OTP) for verifying your email with <b>Tamboo Baba</b> is:
+      </p>
+        <div style="background:#f59e0b22; border-radius:8px; padding:18px 24px; margin:24px auto; text-align:center;">
+          <span style="display:block; color:#fbbf24; font-size:2.2rem; font-weight:bold; letter-spacing:0.4rem;">
+            ${otp}
+          </span>
         </div>
-      `,
-    });
+
+      <p style="color: #e5e7eb; font-size: 0.99rem; margin-bottom: 12px;">
+        This code will expire in <b>15 minutes</b>.
+      </p>
+      <p style="color: #9ca3af; font-size: 0.95rem;">
+        If you did not request this, please ignore this email.
+      </p>
+    </div>
+    <!-- Footer -->
+    <div style="background: #111827; color: #fde68a; text-align: center; font-size: 0.98rem; padding: 14px 0;">
+      <span>Tamboo Baba Systems &bull; ${new Date().getFullYear()}</span>
+      <p style="margin: 0; color: #9ca3af; font-size: 0.88rem;">This message was generated automatically by the Tamboo Baba website.</p>
+    </div>
+  </div>
+  `,
+});
+
 
     return new Response(JSON.stringify({ 
       success: true,

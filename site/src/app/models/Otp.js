@@ -4,7 +4,6 @@ const otpSchema = new mongoose.Schema({
   email: { 
     type: String, 
     required: true,
-    index: true,
     validate: {
       validator: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
       message: props => `${props.value} is not a valid email address!`

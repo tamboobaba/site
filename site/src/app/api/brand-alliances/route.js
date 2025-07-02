@@ -5,6 +5,14 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import path from 'path';
 
+
+const ADMIN_EMAILS = [
+  "tamboobaba25@gmail.com", "harsahibjit@gmail.com","niteshkaggarwal@gmail.com"
+  // "admin2@example.com", // replace with actual emails9815
+  // "admin3@example.com",
+  // "admin4@example.com",
+  // "admin5@example.com"
+];
 // Configure Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -174,6 +182,92 @@ await transporter.sendMail({
   attachments, // ✅ attach PDF only if sendBrochure is checked
 });
 
+
+//mail to admin
+
+const mailOptions = {
+  from: `"Tamboo Baba" <no-reply@tamboobaba.com>`,
+  to: ADMIN_EMAILS.join(','),
+  subject: "🌟 New Brand Alliance Request - Tamboo Baba",
+  html: `
+  <div style="font-family: 'Segoe UI', Arial, sans-serif; background: #18181b; color: #fff; max-width: 600px; margin: 0 auto; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 24px #0003;">
+    <!-- Header -->
+    <div style="background: linear-gradient(90deg, #f59e0b 0%, #111827 100%); padding: 32px 0; text-align: center;">
+      <img src="https://tamboobaba.com/hero-image.png" alt="Tamboo Baba Logo" style="height: 70px; margin-bottom: 10px;" />
+      <h1 style="color: #fff; font-size: 2rem; font-weight: bold; margin: 0;">New Brand Alliance Submission</h1>
+      <p style="color: #fde68a; font-size: 1.1rem; margin: 6px 0 0 0;">A new brand wants to collaborate!</p>
+    </div>
+    <!-- Body -->
+    <div style="padding: 32px 28px; background: #23232a;">
+      <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Company</td>
+          <td style="padding: 10px 0;">${allianceData.companyName}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Contact</td>
+          <td style="padding: 10px 0;">${allianceData.contactName} (<a href="mailto:${allianceData.email}" style="color:#fbbf24;">${allianceData.email}</a>)</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Interests</td>
+          <td style="padding: 10px 0;">${allianceData.interests.join(', ')}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Description</td>
+          <td style="padding: 10px 0;">${allianceData.companyDescription}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Website</td>
+          <td style="padding: 10px 0;"><a href="${allianceData.website}" style="color:#fbbf24;">${allianceData.website}</a></td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Event Types</td>
+          <td style="padding: 10px 0;">${allianceData.eventTypes.join(', ')}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Support Types</td>
+          <td style="padding: 10px 0;">${allianceData.supportTypes.join(', ')}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Timeframe</td>
+          <td style="padding: 10px 0;">${allianceData.timeframe}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Budget</td>
+          <td style="padding: 10px 0;">${allianceData.budget}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Expectations</td>
+          <td style="padding: 10px 0;">${allianceData.expectations}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Logo URL</td>
+          <td style="padding: 10px 0;">
+            ${allianceData.logo ? `<a href="${allianceData.logo}" style="color:#fbbf24;" target="_blank">View Logo</a>` : 'N/A'}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Additional Message</td>
+          <td style="padding: 10px 0;">${allianceData.additionalMessage}</td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; color: #fbbf24; font-weight: bold;">Send Brochure?</td>
+          <td style="padding: 10px 0;">${allianceData.sendBrochure ? 'Yes' : 'No'}</td>
+        </tr>
+      </table>
+    </div>
+    <!-- Footer -->
+    <div style="background: #111827; color: #fde68a; text-align: center; padding: 18px 0;">
+      <p style="margin: 0; font-size: 0.95rem;">Tamboo Baba Admin Notification &bull; ${new Date().getFullYear()}</p>
+      <p style="margin: 0; color: #9ca3af; font-size: 0.88rem;">This message was generated automatically by the Tamboo Baba website.</p>
+    </div>
+  </div>
+  `
+};
+
+
+
+      await transporter.sendMail(mailOptions);
     return NextResponse.json(
       { 
         success: true, 

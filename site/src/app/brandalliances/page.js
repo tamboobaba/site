@@ -29,6 +29,8 @@ const [formData, setFormData] = useState({
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showOtpModal, setShowOtpModal] = useState(false);
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
+
 
   const eventTypesOptions = [
     'Tech Fests', 'Workshops', 'Hackathons', 
@@ -37,26 +39,34 @@ const [formData, setFormData] = useState({
 
   const handleChange = (e) => {
   const { name, value, type, checked } = e.target;
-  
-  if (type === 'checkbox') {
-    if (name === 'interests' || name === 'eventTypes' || name === 'supportTypes') {
-      setFormData(prev => {
-        // Initialize as empty array if undefined
+
+  setFormData(prev => {
+    // If user changes the email, reset isEmailVerified and otp
+    if (name === "email") {
+      return {
+        ...prev,
+        [name]: value,
+        isEmailVerified: false,
+        otp: ''
+      };
+    }
+
+    if (type === 'checkbox') {
+      if (name === 'interests' || name === 'eventTypes' || name === 'supportTypes') {
         const currentArray = Array.isArray(prev[name]) ? prev[name] : [];
         const newArray = checked 
           ? [...currentArray, value]
           : currentArray.filter(item => item !== value);
         return { ...prev, [name]: newArray };
-      });
+      } else {
+        return { ...prev, [name]: checked };
+      }
     } else {
-      // Handle single checkbox (like sendBrochure)
-      setFormData(prev => ({ ...prev, [name]: checked }));
+      return { ...prev, [name]: value };
     }
-  } else {
-    // Handle all other input types
-    setFormData(prev => ({ ...prev, [name]: value }));
-  }
+  });
 };
+
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
@@ -83,51 +93,63 @@ const [formData, setFormData] = useState({
     }));
   };
 
-  const sendOtp = async () => {
-    try {
-      const response = await fetch('/api/auth/send-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: formData.email })
-      });
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to send OTP');
-      }
+  const [otpError, setOtpError] = useState('');
 
-      setShowOtpModal(true);
-      toast.success('OTP sent to your email!');
-    } catch (error) {
-      toast.error(error.message);
-      console.error('OTP Error:', error);
+
+const sendOtp = async () => {
+  setOtpError(''); // Clear previous errors
+  try {
+    const response = await fetch('/api/auth/send-otp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: formData.email })
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      setOtpError(error.message || 'Failed to send OTP');
+      throw new Error(error.message || 'Failed to send OTP');
     }
-  };
 
-  const verifyOtp = async () => {
-    try {
-      const response = await fetch('/api/auth/verify-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          email: formData.email,
-          otp: formData.otp 
-        })
-      });
+    setShowOtpModal(true);
+    toast.success('OTP sent to your email!');
+  } catch (error) {
+    setOtpError(error.message);
+    toast.error(error.message);
+    console.error('OTP Error:', error);
+  }
+};
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Invalid OTP');
-      }
+const verifyOtp = async () => {
+  setOtpError(''); // Clear previous errors
+  try {
+    const response = await fetch('/api/auth/verify-otp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        email: formData.email,
+        otp: formData.otp 
+      })
+    });
 
-      setFormData(prev => ({ ...prev, isEmailVerified: true }));
-      setShowOtpModal(false);
-      toast.success('Email verified successfully!');
-    } catch (error) {
-      toast.error(error.message);
-      console.error('Verification Error:', error);
+    if (!response.ok) {
+      const error = await response.json();
+      setOtpError(error.message || 'Invalid OTP');
+      throw new Error(error.message || 'Invalid OTP');
     }
-  };
+
+    setFormData(prev => ({ ...prev, isEmailVerified: true }));
+    setShowOtpModal(false);
+    setOtpError('');
+    toast.success('Email verified successfully!');
+  } catch (error) {
+    setOtpError(error.message);
+    toast.error(error.message);
+    console.error('Verification Error:', error);
+  }
+};
+const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -161,8 +183,15 @@ const [formData, setFormData] = useState({
         const error = await response.json();
         throw new Error(error.message || 'Submission failed');
       }
+      
 
       toast.success('Submission successful! We will contact you soon.');
+      setSubmissionSuccess(true);
+      toast.success('Submission successful! We will contact you soon.');
+      setShowSuccessModal(true);
+
+      setTimeout(() => setSubmissionSuccess(false), 25000);
+
       // Reset form
       setFormData({
         companyName: '',
@@ -195,6 +224,23 @@ const [formData, setFormData] = useState({
   
   return (
     <div className="min-h-screen bg-gray-950 text-white py-12 px-4 sm:px-6 lg:px-8">
+      {otpError && (
+  <div className="text-red-500 mt-2">{otpError}</div>
+)}
+      {/* "min-h-screen bg-gradient-to-br from-yellow-900 via-gray-950 to-black text-white py-12 px-4 sm:px-6 lg:px-8" */}
+      <div className="flex flex-col items-center mb-8">
+          <img
+            src="/logo.png"
+            alt="Tamboo Baba Logo"
+            className="w-32 h-32 object-contain mb-2 drop-shadow-lg"
+            style={{ filter: 'drop-shadow(0 0 8px #FFD600)' }}
+          />
+          {/* <h1 className="text-4xl font-extrabold text-yellow-400 tracking-wide mb-1">
+            Tamboo Baba
+          </h1>
+          <p className="text-gray-400 text-lg font-medium">Brand Alliances</p> */}
+        </div>
+
       <div className="max-w-4xl mx-auto bg-gray-900/50 border border-white/10 rounded-xl p-6 sm:p-8 shadow-lg">
         <div className="text-center mb-10">
           <h1 className="text-3xl sm:text-4xl font-bold mb-2">
@@ -204,6 +250,15 @@ const [formData, setFormData] = useState({
             Let's create something extraordinary together. Fill out this form to explore partnership opportunities.
           </p>
         </div>
+
+        {submissionSuccess && (
+            <div className="mb-6 flex items-center justify-center gap-2 text-green-400 text-lg font-semibold">
+              <FiCheck className="text-2xl" /> Request submitted successfully!
+            </div>
+          )}
+
+
+
 
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Section 1: Contact Information */}
@@ -451,7 +506,7 @@ const [formData, setFormData] = useState({
             {/* Budget */}
             <div>
               <label className="block text-sm font-medium mb-2">
-                Do you have a budget in mind for sponsorship (if applicable)?
+                Do you have a budget in mind for sponsorship (Enter in ₹ if applicable)?
               </label>
               <input
                 type="text"
@@ -554,12 +609,34 @@ const [formData, setFormData] = useState({
           {/* Submit Button */}
           <div className="pt-4">
             <button
-              type="submit"
-              disabled={isSubmitting || !formData.isEmailVerified}
-              className={`w-full py-3 px-6 rounded-lg font-medium ${isSubmitting || !formData.isEmailVerified ? 'bg-gray-600 cursor-not-allowed' : 'bg-yellow-400 hover:bg-yellow-500 text-black'}`}
-            >
-              {isSubmitting ? 'Submitting...' : 'Submit Partnership Request'}
-            </button>
+                type="submit"
+                disabled={isSubmitting || !formData.isEmailVerified}
+                className={`w-full py-3 px-6 rounded-lg font-medium flex items-center justify-center gap-2 ${
+                  isSubmitting || !formData.isEmailVerified
+                    ? 'bg-gray-600 cursor-not-allowed'
+                    : 'bg-yellow-400 hover:bg-yellow-500 text-black'
+                }`}
+              >
+                {isSubmitting && (
+                  <svg className="animate-spin h-5 w-5 text-black" fill="none" viewBox="0 0 24 24">
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v8z"
+                    ></path>
+                  </svg>
+                )}
+                {isSubmitting ? 'Submitting...' : 'Submit Partnership Request'}
+              </button>
+
             {!formData.isEmailVerified && (
               <p className="mt-2 text-sm text-red-400">
                 Please verify your email before submitting
@@ -570,51 +647,80 @@ const [formData, setFormData] = useState({
       </div>
 
       {/* OTP Verification Modal */}
-      {showOtpModal && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-          <div className="bg-gray-900 border border-white/10 rounded-xl p-6 max-w-md w-full">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-semibold">Verify Your Email</h3>
-              <button onClick={() => setShowOtpModal(false)} className="text-gray-400 hover:text-white">
-                <FiX size={24} />
-              </button>
-            </div>
-            <p className="text-gray-300 mb-4">
-              We've sent a 6-digit OTP to <span className="font-medium">{formData.email}</span>. Please enter it below:
-            </p>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">OTP Code</label>
-                <input
-                  type="text"
-                  name="otp"
-                  value={formData.otp}
-                  onChange={handleChange}
-                  maxLength={6}
-                  className="w-full bg-gray-800 border border-white/10 rounded-lg px-4 py-3"
-                  placeholder="Enter 6-digit code"
-                />
-              </div>
-              <div className="flex justify-end gap-3">
-                <button
-                  type="button"
-                  onClick={() => setShowOtpModal(false)}
-                  className="px-4 py-2 border border-white/20 rounded hover:bg-white/10"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  onClick={verifyOtp}
-                  className="px-4 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500"
-                >
-                  Verify
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+{showOtpModal && (
+  <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+    <div className="bg-gray-900 border border-white/10 rounded-xl p-6 max-w-md w-full">
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-xl font-semibold">Verify Your Email</h3>
+        <button onClick={() => setShowOtpModal(false)} className="text-gray-400 hover:text-white">
+          <FiX size={24} />
+        </button>
+      </div>
+      <p className="text-gray-300 mb-4">
+        We've sent a 6-digit OTP to <span className="font-medium">{formData.email}</span>. Please enter it below:
+      </p>
+      {/* Show OTP Error Here */}
+      {otpError && (
+        <div className="mb-4 text-red-400 font-semibold text-center">{otpError}</div>
       )}
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium mb-2">OTP Code</label>
+          <input
+            type="text"
+            name="otp"
+            value={formData.otp}
+            onChange={handleChange}
+            maxLength={6}
+            className="w-full bg-gray-800 border border-white/10 rounded-lg px-4 py-3"
+            placeholder="Enter 6-digit code"
+          />
+        </div>
+        <div className="flex justify-end gap-3">
+          <button
+            type="button"
+            onClick={() => setShowOtpModal(false)}
+            className="px-4 py-2 border border-white/20 rounded hover:bg-white/10"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            onClick={verifyOtp}
+            className="px-4 py-2 bg-yellow-400 text-black rounded hover:bg-yellow-500"
+          >
+            Verify
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+
+
+{/* submissionSuccessful modal */}
+
+{showSuccessModal && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+    <div className="bg-gray-900 border border-yellow-400 rounded-xl p-8 max-w-md w-full text-center shadow-2xl">
+      <div className="flex flex-col items-center">
+        <FiCheck className="text-green-400 text-5xl mb-4" />
+        <h2 className="text-2xl font-bold mb-2 text-yellow-400">Request Submitted!</h2>
+        <p className="text-gray-200 mb-6">
+          Thank you for your interest. We have received your request and will contact you soon.
+        </p>
+        <button
+          onClick={() => setShowSuccessModal(false)}
+          className="px-6 py-2 bg-yellow-400 text-black rounded-lg font-semibold hover:bg-yellow-500 transition"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }

@@ -123,6 +123,15 @@ useEffect(() => {
             <a href="#events" className="hover:text-yellow-400 transition-colors">Events</a>
             {/* <a href="#testimonials" className="hover:text-yellow-400 transition-colors">Clients</a> */}
             <a href="#contact" className="hover:text-yellow-400 transition-colors">Contact</a>
+            <a 
+              href="/brandalliances" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-yellow-400 transition-colors"
+              >
+              Brand Alliances
+              </a>
+
             {/* <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-2 rounded-full font-medium transition-colors flex items-center">
               Get Started <FiArrowRight className="ml-2" />
             </button> */}
@@ -145,8 +154,16 @@ useEffect(() => {
           <a href="#features" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Features</a>
           <a href="#events" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Events</a>
           {/* <a href="#testimonials" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Clients</a> */}
-          <a href="/brandalliances" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Brand Alliances</a>
+          <a 
+              href="/brandalliances" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-yellow-400 transition-colors"
+              >
+              Brand Alliances
+              </a>
           <a href="#contact" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Contact</a>
+          
           {/* <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-3 rounded-full font-medium transition-colors text-xl mt-8 flex items-center">
             Get Started <FiArrowRight className="ml-2" />
           </button> */}

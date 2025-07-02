@@ -19,6 +19,7 @@ export default function Navbar() {
             <Link href="/services" className="hover:text-yellow-400 transition-colors">Services</Link>
             <Link href="/bookings" className="hover:text-yellow-400 transition-colors">My Bookings</Link>
             <Link href="/contact" className="hover:text-yellow-400 transition-colors">Contact</Link>
+            <Link href="/BrandAlliances" className="hover:text-yellow-400 transition-colors">Brand Alliances</Link>
           </nav>
           
           {/* Mobile Menu Button */}
@@ -44,6 +45,7 @@ export default function Navbar() {
               <Link href="/services" className="hover:text-yellow-400 transition-colors">Services</Link>
               <Link href="/bookings" className="hover:text-yellow-400 transition-colors">My Bookings</Link>
               <Link href="/contact" className="hover:text-yellow-400 transition-colors">Contact</Link>
+              <Link href="/BrandAlliances" className="hover:text-yellow-400 transition-colors">Brand Alliances</Link>
             </nav>
           </div>
         )}
