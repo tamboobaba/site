@@ -5,7 +5,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FiArrowRight, FiCheck, FiMenu, FiX } from 'react-icons/fi';
 import Link from 'next/link';
-
+import Image from 'next/image';
+import EventsDisplay from './components/EventsDisplay';
 
 export default function Home() {
   const headerRef = useRef();
@@ -119,6 +120,7 @@ useEffect(() => {
           <nav className="hidden md:flex items-center space-x-10">
             <a href="#services" className="hover:text-yellow-400 transition-colors">Services</a>
             <a href="#features" className="hover:text-yellow-400 transition-colors">Features</a>
+            <a href="#events" className="hover:text-yellow-400 transition-colors">Events</a>
             {/* <a href="#testimonials" className="hover:text-yellow-400 transition-colors">Clients</a> */}
             <a href="#contact" className="hover:text-yellow-400 transition-colors">Contact</a>
             {/* <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-2 rounded-full font-medium transition-colors flex items-center">
@@ -141,7 +143,9 @@ useEffect(() => {
         <nav className="flex flex-col items-center space-y-8 text-2xl">
           <a href="#services" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Services</a>
           <a href="#features" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Features</a>
+          <a href="#events" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Events</a>
           {/* <a href="#testimonials" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Clients</a> */}
+          <a href="/brandalliances" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Brand Alliances</a>
           <a href="#contact" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Contact</a>
           {/* <button className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-3 rounded-full font-medium transition-colors text-xl mt-8 flex items-center">
             Get Started <FiArrowRight className="ml-2" />
@@ -187,11 +191,15 @@ useEffect(() => {
     <div className="lg:w-1/2 mt-12 lg:mt-0">
       <div className="relative aspect-square lg:aspect-video w-full max-w-2xl mx-auto">
         {/* Replace with your actual image */}
-        <img 
-          src="/hero-image.png" // Update with your image path
-          alt="Tamboo Baba Event Management"
-          className="w-full h-full object-cover rounded-2xl shadow-xl border-2 border-white/10"
-        />
+
+<Image
+  src="/hero-image.png"
+  alt="Tamboo Baba Event Management"
+  width={800}
+  height={500}
+  className="w-full h-full object-cover rounded-2xl shadow-xl border-2 border-white/10"
+/>
+
         {/* Decorative elements */}
         <div className="absolute -inset-4 bg-yellow-400/10 rounded-2xl -z-10"></div>
         <div className="absolute -top-6 -right-6 w-24 h-24 bg-purple-500/20 rounded-full blur-xl"></div>
@@ -328,6 +336,26 @@ useEffect(() => {
         </div>
       </section>
 
+
+        {/* Upcoming Events Section */}
+        <section id="events" className="py-28 relative overflow-hidden">
+          <div className="container mx-auto px-6">
+            <div className="max-w-2xl mx-auto text-center mb-20">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Upcoming Events</h2>
+              <p className="text-xl text-gray-300">
+                Experience our premium event management services in action
+              </p>
+            </div>
+            
+            <EventsDisplay />
+          </div>
+          
+          {/* Decorative elements */}
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"></div>
+        </section>
+
+
       {/* CTA Section */}
       <section 
         ref={ctaRef}
@@ -337,7 +365,7 @@ useEffect(() => {
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Elevate Your Event?</h2>
           <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto">
-            Let's create something extraordinary together
+            Let&apos;s create something extraordinary together
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="mailto:tamboobaba@gmail.com">
