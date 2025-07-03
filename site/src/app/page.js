@@ -193,7 +193,7 @@ useEffect(() => {
       <div className="flex flex-col sm:flex-row gap-4 relative z-20"> {/* Added z-20 */}
 <button
   onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-  className="bg-yellow-400/50 hover:bg-yellow-400 text-black px-8 py-4 rounded-full font-medium transition-colors duration-200 text-lg flex items-center justify-center relative z-20 shadow-md hover:shadow-lg"
+className="bg-yellow-400/80 hover:bg-yellow-400 text-black px-8 py-4 rounded-full font-medium transition-all duration-200 text-lg flex items-center justify-center relative z-20 shadow-[0_0_20px_rgba(234,179,8,0.6)] hover:shadow-[0_0_30px_rgba(234,179,8,0.9)]"
 >
   Explore Services <FiArrowRight className="ml-2" />
 </button>
@@ -299,10 +299,11 @@ useEffect(() => {
                 <div className="text-4xl mb-6">{service.icon}</div>
                 <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
                 <p className="text-gray-400">{service.description}</p>
-                <button className="mt-6 text-yellow-400 flex items-center group">
+{/*<button className="mt-6 text-yellow-400 flex items-center group">
                   Learn more
                   <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </button>
+*/}
               </div>
             ))}
           </div>
