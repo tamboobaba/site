@@ -193,7 +193,7 @@ useEffect(() => {
       <div className="flex flex-col sm:flex-row gap-4 relative z-20"> {/* Added z-20 */}
 <button
   onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-className="bg-yellow-400/50 hover:bg-yellow-400 text-black px-8 py-4 rounded-full font-medium transition-all duration-200 text-lg flex items-center justify-center relative z-20 shadow-[0_0_20px_rgba(234,179,8,0.6)] hover:shadow-[0_0_30px_rgba(234,179,8,0.9)]"
+  className="bg-yellow-400/80 hover:bg-yellow-400 text-black px-8 py-4 rounded-full font-medium transition-colors duration-200 text-lg flex items-center justify-center relative z-20 shadow-md hover:shadow-lg"
 >
   Explore Services <FiArrowRight className="ml-2" />
 </button>
