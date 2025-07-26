@@ -16,20 +16,20 @@ export default function Home() {
   const [particles, setParticles] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // Prevent scroll when menu open
-useEffect(() => {
-  document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-  return () => { document.body.style.overflow = ''; };
-}, [isMenuOpen]);
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isMenuOpen]);
 
-useEffect(() => {
-  const generatedParticles = [...Array(20)].map(() => ({
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    duration: 5 + Math.random() * 10,
-    delay: Math.random() * 5
-  }));
-  setParticles(generatedParticles);
-}, []);
+  useEffect(() => {
+    const generatedParticles = [...Array(20)].map(() => ({
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      duration: 5 + Math.random() * 10,
+      delay: Math.random() * 5
+    }));
+    setParticles(generatedParticles);
+  }, []);
 
 
   useEffect(() => {
@@ -177,61 +177,61 @@ useEffect(() => {
 
 
 {/* Hero Section */}
-<section className="min-h-screen flex items-center relative pt-24 overflow-hidden">
-  <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
-    {/* Text Content - Ensure proper z-index and spacing */}
-    <div ref={heroRef} className="lg:w-1/2 relative z-20"> {/* Added z-20 */}
-      <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6">
-        <span className="text-yellow-400">Redefining</span> Event Experiences
-      </h1>
-      <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl blur-[0.5px]">
-        Premium event management solutions that transform ordinary gatherings into unforgettable experiences.
-      </p>
+  <section className="min-h-screen flex items-center relative pt-24 overflow-hidden">
+    <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+      {/* Text Content - Ensure proper z-index and spacing */}
+      <div ref={heroRef} className="lg:w-1/2 relative z-20"> {/* Added z-20 */}
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6">
+          <span className="text-yellow-400">Redefining</span> Event Experiences
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl blur-[0.5px]">
+          Premium event management solutions that transform ordinary gatherings into unforgettable experiences.
+        </p>
 
-      
-      {/* Button Container - Added margin and z-index */}
-      <div className="flex flex-col sm:flex-row gap-4 relative z-20"> {/* Added z-20 */}
-<button
-  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-  className="bg-yellow-400/50 hover:bg-yellow-400 text-black px-8 py-4 rounded-full font-medium transition-colors duration-200 text-lg flex items-center justify-center relative z-20 shadow-md hover:shadow-lg"
->
-  Explore Services <FiArrowRight className="ml-2" />
-</button>
+        
+        {/* Button Container - Added margin and z-index */}
+        <div className="flex flex-col sm:flex-row gap-4 relative z-20"> {/* Added z-20 */}
+  <button
+    onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+  className="bg-yellow-400/80 hover:bg-yellow-400 text-black px-8 py-4 rounded-full font-medium transition-all duration-200 text-lg flex items-center justify-center relative z-20 shadow-[0_0_20px_rgba(234,179,8,0.6)] hover:shadow-[0_0_30px_rgba(234,179,8,0.9)]"
+  >
+    Explore Services <FiArrowRight className="ml-2" />
+  </button>
 
 
-        <button
-          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-          className="bg-transparent hover:bg-white/10 border-2 border-white/20 text-white px-8 py-4 rounded-full font-medium transition-colors text-lg relative z-20 shadow-lg"
-        >
-           {/* Added shadow-lg */}
-          Contact Us
-        </button>
+          <button
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-transparent hover:bg-white/10 border-2 border-white/20 text-white px-8 py-4 rounded-full font-medium transition-colors text-lg relative z-20 shadow-lg"
+          >
+            {/* Added shadow-lg */}
+            Contact Us
+          </button>
+        </div>
+      </div>
+
+      {/* Image Content - Adjusted z-index */}
+      <div className="lg:w-1/2 mt-12 lg:mt-0">
+        <div className="relative aspect-square lg:aspect-video w-full max-w-2xl mx-auto">
+          {/* Replace with your actual image */}
+
+  <Image
+    src="/hero-image.png"
+    alt="Tamboo Baba Event Management"
+    width={800}
+    height={500}
+    className="w-full h-full object-cover rounded-2xl shadow-xl border-2 border-white/10"
+  />
+
+          {/* Decorative elements */}
+          <div className="absolute -inset-4 bg-yellow-400/10 rounded-2xl -z-10"></div>
+          <div className="absolute -top-6 -right-6 w-24 h-24 bg-purple-500/20 rounded-full blur-xl"></div>
+        </div>
       </div>
     </div>
-
-    {/* Image Content - Adjusted z-index */}
-    <div className="lg:w-1/2 mt-12 lg:mt-0">
-      <div className="relative aspect-square lg:aspect-video w-full max-w-2xl mx-auto">
-        {/* Replace with your actual image */}
-
-<Image
-  src="/hero-image.png"
-  alt="Tamboo Baba Event Management"
-  width={800}
-  height={500}
-  className="w-full h-full object-cover rounded-2xl shadow-xl border-2 border-white/10"
-/>
-
-        {/* Decorative elements */}
-        <div className="absolute -inset-4 bg-yellow-400/10 rounded-2xl -z-10"></div>
-        <div className="absolute -top-6 -right-6 w-24 h-24 bg-purple-500/20 rounded-full blur-xl"></div>
-      </div>
-    </div>
-  </div>
-  
-  {/* Hero Decoration - Ensure it stays behind content */}
-  <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-gray-950 to-transparent z-0"></div>
-</section>
+    
+    {/* Hero Decoration - Ensure it stays behind content */}
+    <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-gray-950 to-transparent z-0"></div>
+  </section>
 
 
 
@@ -299,10 +299,10 @@ useEffect(() => {
                 <div className="text-4xl mb-6">{service.icon}</div>
                 <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
                 <p className="text-gray-400">{service.description}</p>
-                <button className="mt-6 text-yellow-400 flex items-center group">
+                {/* <button className="mt-6 text-yellow-400 flex items-center group">
                   Learn more
                   <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </button> */}
               </div>
             ))}
           </div>
