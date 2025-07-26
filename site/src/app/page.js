@@ -15,21 +15,24 @@ export default function Home() {
   const ctaRef = useRef();
   const [particles, setParticles] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // Prevent scroll when menu open
+
+
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [isMenuOpen]);
 
-  useEffect(() => {
-    const generatedParticles = [...Array(20)].map(() => ({
-      top: `${Math.random() * 100}%`,
-      left: `${Math.random() * 100}%`,
-      duration: 5 + Math.random() * 10,
-      delay: Math.random() * 5
-    }));
-    setParticles(generatedParticles);
-  }, []);
+
+  
+useEffect(() => {
+  const generatedParticles = [...Array(20)].map(() => ({
+    top: `${Math.random() * 100}%`,
+    left: `${Math.random() * 100}%`,
+    duration: 5 + Math.random() * 10,
+    delay: Math.random() * 5
+  }));
+  setParticles(generatedParticles);
+}, []);
 
 
   useEffect(() => {
@@ -84,9 +87,8 @@ export default function Home() {
   }, []);
 
   const toggleMenu = () => {
-  setIsMenuOpen(prev => !prev);
-};
-
+    setIsMenuOpen(prev => !prev);
+  };
 
   return (
     <div className="min-h-screen bg-gray-950 text-white overflow-x-hidden">
@@ -142,7 +144,7 @@ export default function Home() {
               Get Started <FiArrowRight className="ml-2" />
             </button> */}
           </nav>
-
+          
           <button className="md:hidden text-2xl z-50" onClick={toggleMenu}>
             {isMenuOpen ? <FiX /> : <FiMenu />}
           </button>
@@ -151,9 +153,8 @@ export default function Home() {
       </header>
 
       {/* Mobile Menu */}
-      <div className={`fixed inset-0 bg-black/90 z-40 flex items-center justify-center transition-all duration-500
+ <div className={`fixed inset-0 bg-black/90 z-40 flex items-center justify-center transition-all duration-500
   ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-      {/* <div className="fixed inset-0 bg-black/90 z-40 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 menu-open:opacity-100 menu-open:pointer-events-auto"> */}
         <nav className="flex flex-col items-center space-y-8 text-2xl">
           <a href="#services" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Services</a>
           <a href="#features" className="hover:text-yellow-400 transition-colors" onClick={toggleMenu}>Features</a>
@@ -188,15 +189,15 @@ export default function Home() {
           Premium event management solutions that transform ordinary gatherings into unforgettable experiences.
         </p>
 
-        
-        {/* Button Container - Added margin and z-index */}
-        <div className="flex flex-col sm:flex-row gap-4 relative z-20"> {/* Added z-20 */}
-  <button
-    onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-  className="bg-yellow-400/80 hover:bg-yellow-400 text-black px-8 py-4 rounded-full font-medium transition-all duration-200 text-lg flex items-center justify-center relative z-20 shadow-[0_0_20px_rgba(234,179,8,0.6)] hover:shadow-[0_0_30px_rgba(234,179,8,0.9)]"
-  >
-    Explore Services <FiArrowRight className="ml-2" />
-  </button>
+      
+      {/* Button Container - Added margin and z-index */}
+      <div className="flex flex-col sm:flex-row gap-4 relative z-20"> {/* Added z-20 */}
+<button
+  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+  className="bg-yellow-400/80 hover:bg-yellow-400 text-black px-8 py-4 rounded-full font-medium transition-colors duration-200 text-lg flex items-center justify-center relative z-20 shadow-md hover:shadow-lg"
+>
+  Explore Services <FiArrowRight className="ml-2" />
+</button>
 
 
           <button
@@ -299,10 +300,11 @@ export default function Home() {
                 <div className="text-4xl mb-6">{service.icon}</div>
                 <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
                 <p className="text-gray-400">{service.description}</p>
-                {/* <button className="mt-6 text-yellow-400 flex items-center group">
+{/*<button className="mt-6 text-yellow-400 flex items-center group">
                   Learn more
                   <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </button> */}
+                </button>
+*/}
               </div>
             ))}
           </div>
