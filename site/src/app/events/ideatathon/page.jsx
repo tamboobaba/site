@@ -4,12 +4,12 @@ import React, { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { 
-  Calendar, 
-  MapPin, 
-  Users, 
-  Trophy, 
-  Download, 
+import {
+  Calendar,
+  MapPin,
+  Users,
+  Trophy,
+  Download,
   ExternalLink,
   Clock,
   Target,
@@ -31,7 +31,7 @@ import {
 } from 'lucide-react'
 
 const IdeatathonPage = () => {
-  
+
    const [isOpen, setIsOpen] = useState(false);
 
   const menuItems = ['About', 'Tracks', 'Prizes', 'Judges', 'Partners', 'Contact'];
@@ -58,6 +58,14 @@ const IdeatathonPage = () => {
     },
     {
       id: 2,
+      name: "Entrepreneurship",
+      icon: <Building className="w-8 h-8" />,
+      description: "Startup Models, MSME Tech, Youth Enterprises",
+      color: "from-orange-500 to-red-500",
+      bgColor: "bg-orange-500/10"
+    },
+    {
+      id: 3,
       name: "Healthcare",
       icon: <Heart className="w-8 h-8" />,
       description: "Mental Health, Accessibility, Diagnostics, Innovation",
@@ -65,7 +73,7 @@ const IdeatathonPage = () => {
       bgColor: "bg-red-500/10"
     },
     {
-      id: 3,
+      id: 4,
       name: "Environment",
       icon: <Leaf className="w-8 h-8" />,
       description: "Climate, Waste Management, Renewable Solutions",
@@ -73,42 +81,49 @@ const IdeatathonPage = () => {
       bgColor: "bg-green-500/10"
     },
     {
-      id: 4,
+      id: 5,
       name: "Education",
       icon: <GraduationCap className="w-8 h-8" />,
       description: "Digital Learning, Teaching Aids, Inclusive Tools",
       color: "from-purple-500 to-violet-500",
       bgColor: "bg-purple-500/10"
-    },
-    {
-      id: 5,
-      name: "Entrepreneurship",
-      icon: <Building className="w-8 h-8" />,
-      description: "Startup Models, MSME Tech, Youth Enterprises",
-      color: "from-orange-500 to-red-500",
-      bgColor: "bg-orange-500/10"
     }
   ]
 
   const judges = {
     Technology: [
-      { name: "Divyam Kalra", role: "Co-founder of Humara Pandit", linkedin: "https://www.linkedin.com/in/divyamkalra/", img: "/ideatathon/judges/divyam.jpg" },
+      { name: "Divyam Kalra", role: "Co-founder of Humara Pandit| Ex ZX", linkedin: "https://www.linkedin.com/in/divyamkalra/", img: "/ideatathon/judges/divyam.jpg" },
       { name: "Vandana Chauhan", role: "Software Engineer @ Palo Alto Networks", linkedin: "https://www.linkedin.com/in/chvandana/", img: "/ideatathon/judges/vandana.jpg" },
-      { name: "Rishabh Jain", role: "SWE-2 @ Goldman Sachs", linkedin: "https://www.linkedin.com/in/rishabhjain21/", img: "/ideatathon/judges/rishabh.jpg" }
-    ],
-    Healthcare: [
-      { name: "Anamika M P", role: "Mesa Founding Cohort 2.0", linkedin: "https://www.linkedin.com/in/anamikamp/", img: "/ideatathon/judges/anamika.jpg" }
-    ],
-    Environment: [
-      { name: "Sidharth Sekhar", role: "AGM - Strategy", linkedin: "https://www.linkedin.com/in/sidharth-sekhar/", img: "/ideatathon/judges/sidharth.jpg" }
-    ],
-    Education: [
-      { name: "Parul Sharma", role: "Founder at Aerie", linkedin: "https://www.linkedin.com/in/parul-sharma-aerie/", img: "/ideatathon/judges/parul.jpg" }
+      { name: "Rishabh Jain", role: "SWE-2 @ Goldman Sachs", linkedin: "https://www.linkedin.com/in/rishabhjain21/", img: "/ideatathon/judges/rishabh.jpg" },
+      { name: "Abhinav Gambhir", role: "Global Lead IEEE | Ex Microsoft", linkedin: "https://www.linkedin.com/in/abhinavgambhir/", img: "/ideatathon/judges/abhinav.jpg" },
+      { name: "Rishabh Raj", role: "Senior Associate - Cubastion", linkedin: "https://www.linkedin.com/in/rishabhraj2257/", img: "/ideatathon/judges/rishabhraj.jpg" }
     ],
     Entrepreneurship: [
-      { name: "Aditya Sharma", role: "Co-founder of Humara Pandit", linkedin: "https://www.linkedin.com/in/adityasharma08/", img: "/ideatathon/judges/aditya.jpg" }
+      { name: "Aditya Sharma", role: "Co-founder of Humara Pandit | Ex ExxonMobil", linkedin: "https://www.linkedin.com/in/adityasharma08/", img: "/ideatathon/judges/aditya.jpg" }
+    ],
+    Healthcare: [
+      { name: "Anamika M P", role: "Relations Manager CREDO | Mesa Founding Cohort 2.0", linkedin: "https://www.linkedin.com/in/anamikamp/", img: "/ideatathon/judges/anamika.jpg" }
+    ],
+    Environment: [
+      { name: "Sidharth Sekhar", role: "AGM Strategy - FITSOL", linkedin: "https://www.linkedin.com/in/sidharth-sekhar/", img: "/ideatathon/judges/sidharth.jpg" }
+    ],
+    Education: [
+      { name: "Parul Sharma", role: "Founder Aerie", linkedin: "https://www.linkedin.com/in/parul-sharma-aerie/", img: "/ideatathon/judges/parul.jpg" }
     ]
   }
+
+  // New data arrays for Hosted By, Event Partner, and Platform Collaborator
+  const hostedBy = [
+    { name: "C Square", logo: "/ideatathon/csquare.png", url: "#" }
+  ];
+
+  const eventPartner = [
+    { name: "Ascent Circle", logo: "/ideatathon/ascentcircle.png", url: "#" }
+  ];
+
+  const platformCollaborator = [
+    { name: "Event Eye", logo: "/ideatathon/eventeye.png", url: "#" }
+  ];
 
   const partners = [
     { name: "Devorious Technologies", ceo: "Harsahibjit Singh", logo: "/ideatathon/devo.png", url: "https://www.devorious.com/" },
@@ -118,7 +133,8 @@ const IdeatathonPage = () => {
     { name: "Bloc", ceo: "Sarah Johnson", logo: "/ideatathon/bloc.png", url: "#" },
     { name: "Aerie Academy", ceo: "Parul Sharma", logo: "/ideatathon/aerie.png", url: "https://www.aerieacademy.com/" },
     { name: "Earthly Liquids", ceo: "Priya Mehta", logo: "/ideatathon/earthlyliquids.png", url: "#" },
-    { name: "Lotus Multi-speciality Hospital", ceo: "Dr. Amit Sharma", logo: "/ideatathon/lotus.png", url: "https://www.lotushospital.co.in/" }
+    { name: "Lotus Multi-speciality Hospital", ceo: "Dr. Amit Sharma", logo: "/ideatathon/lotus.png", url: "https://www.lotushospital.co.in/" },
+    { name: "Wave", ceo: "Aastha", logo: "/ideatathon/wave.png", url: "https://www.wave-length.in/" } // Added Wave Company
   ]
 
   const FloatingParticles = () => (
@@ -183,8 +199,8 @@ const IdeatathonPage = () => {
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-6">
               {menuItems.map((item) => (
-                <a 
-                  key={item} 
+                <a
+                  key={item}
                   href={`#${item.toLowerCase()}`}
                   className="text-gray-300 hover:text-blue-400 transition-colors"
                 >
@@ -260,13 +276,13 @@ const IdeatathonPage = () => {
       <GlowingOrb className="w-80 h-80 bg-pink-500/20 bottom-0 right-1/4" delay={2} /> */}
 
       {/* Hero Section */}
-      <motion.section 
+      <motion.section
         id="home"
         className="relative min-h-screen flex items-center justify-center px-4 pt-16"
         style={{ y, opacity }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black/80" />
-        
+
         <div className="relative z-10 text-center max-w-6xl mx-auto">
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
@@ -358,7 +374,7 @@ const IdeatathonPage = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
         {/* About Section */}
-        <motion.section 
+        <motion.section
           id="about"
           className="mb-24"
           initial={{ opacity: 0, y: 50 }}
@@ -367,7 +383,7 @@ const IdeatathonPage = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="text-center mb-16">
-            <motion.h2 
+            <motion.h2
               className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -375,20 +391,20 @@ const IdeatathonPage = () => {
             >
               About the Event
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="text-xl text-gray-300 max-w-4xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              Ideat-a-thon 2025 is a national innovation sprint inviting India's brightest problem-solvers 
+              Ideat-a-thon 2025 is a national innovation sprint inviting India's brightest problem-solvers
               to compete and collaborate for 24 hours of non-stop creativity and impact.
             </motion.p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <motion.div 
+            <motion.div
               className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50 hover-glow"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -400,7 +416,7 @@ const IdeatathonPage = () => {
               <p className="text-gray-300">Chandigarh University</p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50 hover-glow"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -443,7 +459,7 @@ const IdeatathonPage = () => {
         </motion.section>
 
         {/* Guidelines Section */}
-        <motion.section 
+        <motion.section
           className="mb-24"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -484,7 +500,7 @@ const IdeatathonPage = () => {
         </motion.section>
 
         {/* Tracks Section */}
-        <motion.section 
+        <motion.section
           id="tracks"
           className="mb-24"
           initial={{ opacity: 0 }}
@@ -501,8 +517,8 @@ const IdeatathonPage = () => {
               <motion.div
                 key={track.id}
                 className={`relative p-6 rounded-2xl border-2 ${
-                  activeTrack === index 
-                    ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-purple-500/20 glow' 
+                  activeTrack === index
+                    ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-purple-500/20 glow'
                     : 'border-gray-700 bg-gradient-to-br from-gray-800/50 to-gray-900/50 hover:border-gray-600 hover-glow'
                 }`}
                 initial={{ opacity: 0, y: 30 }}
@@ -544,7 +560,7 @@ const IdeatathonPage = () => {
         </motion.section>
 
         {/* Prizes Section */}
-        <motion.section 
+        <motion.section
           id="prizes"
           className="mb-24"
           initial={{ opacity: 0 }}
@@ -611,7 +627,7 @@ const IdeatathonPage = () => {
         </motion.section>
 
         {/* Judges Section */}
-        <motion.section 
+        <motion.section
           id="judges"
           className="mb-24"
           initial={{ opacity: 0 }}
@@ -650,8 +666,8 @@ const IdeatathonPage = () => {
                     >
                       <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500 p-1">
                         <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
-                          <Image 
-                            src={judge.img} 
+                          <Image
+                            src={judge.img}
                             alt={judge.name}
                             width={128}
                             height={128}
@@ -697,7 +713,7 @@ const IdeatathonPage = () => {
         </motion.section>
 
         {/* Event Lead Section */}
-        <motion.section 
+        <motion.section
           className="mb-24"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -717,8 +733,8 @@ const IdeatathonPage = () => {
           >
             <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500 p-1">
               <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
-                <Image 
-                  src="/ideatathon/ansh.png" 
+                <Image
+                  src="/ideatathon/ansh.png"
                   alt="Ansh Malhotra"
                   width={128}
                   height={128}
@@ -733,7 +749,7 @@ const IdeatathonPage = () => {
             <p className="text-gray-400 mb-4">Event Lead & Organizer</p>
             <div className="flex justify-center space-x-4">
               <motion.a
-                href="https://www.linkedin.com/in/ansh-malhotra-1a2b3c/"
+                href="https://in.linkedin.com/in/ansh-malhotra-748700293"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center cursor-pointer hover-glow"
@@ -746,87 +762,238 @@ const IdeatathonPage = () => {
           </motion.div>
         </motion.section>
 
-        {/* Partners Section */}
-        <motion.section 
-  id="partners"
+        {/* Hosted By Section - Vertical Layout */}
+<motion.section
   className="mb-24"
   initial={{ opacity: 0 }}
   whileInView={{ opacity: 1 }}
   viewport={{ once: true }}
 >
-  <div className="text-center mb-12">
-    <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent">
-      Supported By
-    </h2>
-    <p className="text-lg text-gray-400">Our amazing partners who make this event possible</p>
-  </div>
+  <div className="flex flex-col items-center">
+    {/* Header */}
+    <div className="text-center mb-8">
+      <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+        Hosted By
+      </h2>
+      <p className="text-lg text-gray-400">C Square Chandigarh University</p>
+    </div>
 
-  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-    {partners.map((partner, index) => (
-      <motion.div
-        key={index}
-        className={`p-6 rounded-xl border ${
-          partner.name === "Devorious Technologies"
-            ? 'border-blue-500/40 shadow-md shadow-blue-500/30'
-            : 'border-gray-800 hover:border-gray-600'
-        } transition-all duration-300 bg-[#111827] text-center group`}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.1 }}
-        whileHover={{ scale: 1.04, y: -5 }}
+    {/* Spacer */}
+    <div className="h-8"></div>
+
+    {/* Logo Card */}
+    <motion.div
+      className="p-8 rounded-xl border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-[#111827] text-center group w-full max-w-xs"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3 }}
+      whileHover={{ scale: 1.04, y: -5 }}
+    >
+      <a
+        href="https://in.linkedin.com/company/csquare-club"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
       >
-        {partner.url !== "#" ? (
-          <a href={partner.url} target="_blank" rel="noopener noreferrer" className="block">
-            <div className="w-20 h-20 mx-auto mb-4 rounded-2xl overflow-hidden bg-gray-900 flex items-center justify-center">
-              <Image 
-                src={partner.logo} 
-                alt={`${partner.name} logo`} 
-                width={64} 
-                height={64} 
-                className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
-                onError={(e) => {
-                  e.target.src = `https://ui-avatars.com/api/?name=${partner.name.split(' ')[0]}&background=random&color=fff&size=64`;
-                }}
-              />
-            </div>
-            <h3 className={`font-bold text-sm ${
-              partner.name === "Devorious Technologies"
-                ? 'text-blue-400'
-                : 'text-white group-hover:text-blue-400'
-            } transition-colors`}>
-              {partner.name}
-            </h3>
-            <p className="text-xs text-gray-500 mt-1">CEO: {partner.ceo}</p>
-          </a>
-        ) : (
-          <>
-            <div className="w-20 h-20 mx-auto mb-4 rounded-2xl overflow-hidden bg-gray-900 flex items-center justify-center">
-              <Image 
-                src={partner.logo} 
-                alt={`${partner.name} logo`} 
-                width={64} 
-                height={64} 
-                className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
-                onError={(e) => {
-                  e.target.src = `https://ui-avatars.com/api/?name=${partner.name.split(' ')[0]}&background=random&color=fff&size=64`;
-                }}
-              />
-            </div>
-            <h3 className="font-bold text-sm text-white group-hover:text-blue-400 transition-colors">
-              {partner.name}
-            </h3>
-            <p className="text-xs text-gray-500 mt-1">CEO: {partner.ceo}</p>
-          </>
-        )}
-      </motion.div>
-    ))}
+        <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center p-2">
+          <Image
+            src="/ideatathon/csquare.png"
+            alt="C Square logo"
+            width={80}
+            height={80}
+            className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
+          />
+        </div>
+        <h3 className="font-bold text-xl text-white group-hover:text-blue-400 transition-colors">
+          C Square
+        </h3>
+      </a>
+    </motion.div>
+  </div>
+</motion.section>
+{/* Event Partner Section */}
+<motion.section
+  className="mb-24"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true }}
+>
+  <div className="flex flex-col items-center">
+    {/* Header */}
+    <div className="text-center mb-8">
+      <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-red-400 to-orange-500 bg-clip-text text-transparent">
+        Event Partner
+      </h2>
+      <p className="text-lg text-gray-400">Ascent Circle</p>
+    </div>
+
+    {/* Spacer */}
+    <div className="h-8"></div>
+
+    {/* Logo Card */}
+    <motion.div
+      className="p-8 rounded-xl border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-[#111827] text-center group w-full max-w-xs"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3 }}
+      whileHover={{ scale: 1.04, y: -5 }}
+    >
+      <a
+        href="https://ascentcircle.web.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
+        <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center p-2">
+          <Image
+            src="/ideatathon/ascentcircle.png"
+            alt="Ascent Circle logo"
+            width={80}
+            height={80}
+            className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
+          />
+        </div>
+        <h3 className="font-bold text-xl text-white group-hover:text-red-400 transition-colors">
+          Ascent Circle
+        </h3>
+      </a>
+    </motion.div>
   </div>
 </motion.section>
 
+{/* Platform Collaborator Section */}
+<motion.section
+  className="mb-24"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true }}
+>
+  <div className="flex flex-col items-center">
+    {/* Header */}
+    <div className="text-center mb-8">
+      <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+        Platform Collaborator
+      </h2>
+      <p className="text-lg text-gray-400">EventEye</p>
+    </div>
+
+    {/* Spacer */}
+    <div className="h-8"></div>
+
+    {/* Logo Card */}
+    <motion.div
+      className="p-8 rounded-xl border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-[#111827] text-center group w-full max-w-xs"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3 }}
+      whileHover={{ scale: 1.04, y: -5 }}
+    >
+      <a
+        href="https://www.eventeye.in/events/ideatathon-chandigarh-university-2025"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
+        <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center p-2">
+          <Image
+            src="/ideatathon/eventeye.png"
+            alt="EventEye logo"
+            width={80}
+            height={80}
+            className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
+          />
+        </div>
+        <h3 className="font-bold text-xl text-white group-hover:text-green-400 transition-colors">
+          Eventeye
+        </h3>
+      </a>
+    </motion.div>
+  </div>
+</motion.section>
+
+        {/* Partners Section (now "Supported By") */}
+        <motion.section
+          id="partners"
+          className="mb-24"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent">
+              Supported By
+            </h2>
+            <p className="text-lg text-gray-400">Our amazing partners who make this event possible</p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {partners.map((partner, index) => (
+              <motion.div
+                key={index}
+                className={`p-6 rounded-xl border ${
+                  partner.name === "Devorious Technologies"
+                    ? 'border-blue-500/40 shadow-md shadow-blue-500/30'
+                    : 'border-gray-800 hover:border-gray-600'
+                } transition-all duration-300 bg-[#111827] text-center group`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.04, y: -5 }}
+              >
+                {partner.url !== "#" ? (
+                  <a href={partner.url} target="_blank" rel="noopener noreferrer" className="block">
+                    <div className="w-20 h-20 mx-auto mb-4 rounded-2xl overflow-hidden bg-gray-900 flex items-center justify-center">
+                      <Image
+                        src={partner.logo}
+                        alt={`${partner.name} logo`}
+                        width={64}
+                        height={64}
+                        className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
+                        onError={(e) => {
+                          e.target.src = `https://ui-avatars.com/api/?name=${partner.name.split(' ')[0]}&background=random&color=fff&size=64`;
+                        }}
+                      />
+                    </div>
+                    <h3 className={`font-bold text-sm ${
+                      partner.name === "Devorious Technologies"
+                        ? 'text-blue-400'
+                        : 'text-white group-hover:text-blue-400'
+                    } transition-colors`}>
+                      {partner.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 mt-1">CEO: {partner.ceo}</p>
+                  </a>
+                ) : (
+                  <>
+                    <div className="w-20 h-20 mx-auto mb-4 rounded-2xl overflow-hidden bg-gray-900 flex items-center justify-center">
+                      <Image
+                        src={partner.logo}
+                        alt={`${partner.name} logo`}
+                        width={64}
+                        height={64}
+                        className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
+                        onError={(e) => {
+                          e.target.src = `https://ui-avatars.com/api/?name=${partner.name.split(' ')[0]}&background=random&color=fff&size=64`;
+                        }}
+                      />
+                    </div>
+                    <h3 className="font-bold text-sm text-white group-hover:text-blue-400 transition-colors">
+                      {partner.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 mt-1">CEO: {partner.ceo}</p>
+                  </>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
 
         {/* Registration Links Section */}
-        <motion.section 
+        <motion.section
           className="mb-24"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -891,7 +1058,7 @@ const IdeatathonPage = () => {
         </motion.section>
 
         {/* Contact Section */}
-        <motion.section 
+        <motion.section
           id="contact"
           className="mb-24"
           initial={{ opacity: 0 }}
@@ -972,7 +1139,7 @@ const IdeatathonPage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="relative bg-gradient-to-r from-gray-900 via-black to-gray-900 border-t border-gray-800 pb-25">
+      <footer className="relative bg-gradient-to-r from-gray-900 via-black to-gray-900 border-t border-gray-800">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
           <div className="grid md:grid-cols-4 gap-8">
@@ -991,7 +1158,7 @@ const IdeatathonPage = () => {
                 </h3>
               </div>
               <p className="text-gray-400 mb-6 max-w-md">
-                Empowering innovation and fostering creativity through world-class events and competitions. 
+                Empowering innovation and fostering creativity through world-class events and competitions.
                 Join us in shaping the future of technology and entrepreneurship.
               </p>
               <div className="flex space-x-4">
@@ -1030,7 +1197,7 @@ const IdeatathonPage = () => {
                   { name: "Contact Us", href: "mailto:tamboobaba@gmail.com" }
                 ].map((link, index) => (
                   <li key={index}>
-                    <a 
+                    <a
                       href={link.href}
                       className="text-gray-400 hover:text-blue-400 transition-colors duration-300 flex items-center gap-2"
                       target={link.href.startsWith('http') ? '_blank' : undefined}
@@ -1080,7 +1247,7 @@ const IdeatathonPage = () => {
             transition={{ delay: 0.3 }}
           >
             <p className="text-gray-400">
-              © 2025 Tamboo Baba. All rights reserved. | 
+              © 2025 Tamboo Baba. All rights reserved. |
               <span className="text-blue-400 ml-1">Ideat-a-thon 2025 - Ignite. Innovate. Impact.</span>
             </p>
             <p className="text-gray-500 text-sm mt-2">
