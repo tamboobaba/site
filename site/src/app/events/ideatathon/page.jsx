@@ -95,7 +95,7 @@ const IdeatathonPage = () => {
       { name: "Divyam Kalra", role: "Co-founder of Humara Pandit| Ex ZX", linkedin: "https://www.linkedin.com/in/divyamkalra/", img: "/ideatathon/judges/divyam.jpg" },
       { name: "Vandana Chauhan", role: "Software Engineer @ Palo Alto Networks", linkedin: "https://www.linkedin.com/in/chvandana/", img: "/ideatathon/judges/vandana.jpg" },
       { name: "Rishabh Jain", role: "SWE-2 @ Goldman Sachs", linkedin: "https://www.linkedin.com/in/rishabhjain21/", img: "/ideatathon/judges/rishabh.jpg" },
-      { name: "Abhinav Gambhir", role: "Global Lead IEEE | Ex Microsoft", linkedin: "https://www.linkedin.com/in/abhinavgambhir/", img: "/ideatathon/judges/abhinav.jpg" },
+      { name: "Abhinav Gambhir", role: "Global Lead IEEE HIZE | Ex Microsoft", linkedin: "https://www.linkedin.com/in/abhinavgambhir/", img: "/ideatathon/judges/abhinav.jpg" },
       { name: "Rishabh Raj", role: "Senior Associate - Cubastion", linkedin: "https://www.linkedin.com/in/rishabhraj2257/", img: "/ideatathon/judges/rishabhraj.jpg" }
     ],
     Entrepreneurship: [
@@ -128,11 +128,11 @@ const IdeatathonPage = () => {
   const partners = [
     { name: "Devorious Technologies", ceo: "Harsahibjit Singh", logo: "/ideatathon/devo.png", url: "https://www.devorious.com/" },
     { name: "UNCLE Fab", ceo: "Nitesh Kumar", logo: "/ideatathon/unclefab.png", url: "https://www.unclefab.co/" },
-    { name: "Biostack", ceo: "Dr. Rajesh Kumar", logo: "/ideatathon/biostack.png", url: "#" },
+    { name: "Biostack", ceo: "Mr. Sandeep Kumar", logo: "/ideatathon/biostack.png", url: "#" },
     { name: "Humara Pandit", ceo: "Divyam Kalra", logo: "/ideatathon/humarapandit.png", url: "https://humarapandit.com/" },
-    { name: "Bloc", ceo: "Sarah Johnson", logo: "/ideatathon/bloc.png", url: "#" },
+    { name: "Bloc", ceo: "Rishabh", logo: "/ideatathon/bloc.png", url: "#" },
     { name: "Aerie Academy", ceo: "Parul Sharma", logo: "/ideatathon/aerie.png", url: "https://www.aerieacademy.com/" },
-    { name: "Earthly Liquids", ceo: "Priya Mehta", logo: "/ideatathon/earthlyliquids.png", url: "#" },
+    { name: "Earthly Liquids", ceo: "Rupanshi Garg & Garvit Nama", logo: "/ideatathon/earthlyliquids.png", url: "#" },
     { name: "Lotus Multi-speciality Hospital", ceo: "Dr. Amit Sharma", logo: "/ideatathon/lotus.png", url: "https://www.lotushospital.co.in/" },
     { name: "Wave", ceo: "Aastha", logo: "/ideatathon/wave.png", url: "https://www.wave-length.in/" } // Added Wave Company
   ]
@@ -180,6 +180,65 @@ const IdeatathonPage = () => {
 
 
   return (
+    <>
+    <Head>
+      <title>Ideat-a-thon 2025 | Innovation Challenge by Tamboo Baba at Chandigarh University</title>
+      <meta name="description" content="Ignite, Innovate, Impact with Ideat-a-thon 2025! India's boldest innovation challenge by Tamboo Baba at Chandigarh University. Compete across AI, Entrepreneurship, Healthcare, Environment, and Education tracks for ₹1,00,000+ in prizes." />
+      {/* Open Graph Tags for Social Sharing */}
+      <meta property="og:title" content="Ideat-a-thon 2025 | Innovation Challenge by Tamboo Baba" />
+      <meta property="og:description" content="Ignite, Innovate, Impact with Ideat-a-thon 2025! India's boldest innovation challenge by Tamboo Baba at Chandigarh University. Compete across 5 tracks for ₹1,00,000+ in prizes." />
+      <meta property="og:image" content="https://tamboobaba.com/logo.png" /> {/* Replace with your actual image URL */}
+      <meta property="og:url" content="https://tamboobaba.com/events/ideatathon" /> {/* Replace with your actual page URL */}
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Tamboo Baba" />
+      {/* Twitter Card Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Ideat-a-thon 2025 | Innovation Challenge by Tamboo Baba" />
+      <meta name="twitter:description" content="Ignite, Innovate, Impact with Ideat-a-thon 2025! India's boldest innovation challenge by Tamboo Baba at Chandigarh University. Compete across 5 tracks for ₹1,00,000+ in prizes." />
+      <meta name="twitter:image" content="https://tamboobaba.com/logo.png" /> {/* Replace with your actual image URL */}
+      {/* Schema Markup (JSON-LD) */}
+      <script type="application/ld+json">
+        {`
+        {
+          "@context": "https://schema.org",
+          "@type": "Event",
+          "name": "Ideat-a-thon 2025",
+          "startDate": "2025-XX-XXT09:00:00+05:30", // Replace with actual date and time
+          "endDate": "2025-XX-XXT09:00:00+05:30",   // Replace with actual date and time
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "location": {
+            "@type": "Place",
+            "name": "Chandigarh University",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "NH-5, Chandigarh-Ludhiana Hwy",
+              "addressLocality": "Mohali",
+              "addressRegion": "Punjab",
+              "postalCode": "140413",
+              "addressCountry": "IN"
+            }
+          },
+          "image": [
+            "https://tamboobaba.com/logo.png" // Replace with your actual image URL
+          ],
+          "description": "India's boldest innovation challenge by Tamboo Baba at Chandigarh University, focusing on AI, Entrepreneurship, Healthcare, Environment, and Education.",
+          "offers": {
+            "@type": "Offer",
+            "name": "Registration",
+            "url": "https://unstop.com/o/DISMc2C?lb=Rljx3SsD&utm_medium=Share&utm_source=shortUrl",
+            "priceCurrency": "INR",
+            "availability": "https://schema.org/InStock"
+          },
+          "organizer": {
+            "@type": "Organization",
+            "name": "Tamboo Baba",
+            "url": "https://tamboobaba.com"
+          }
+        }
+        `}
+      </script>
+    </Head>
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-hidden pt-5">
       <FloatingParticles />
 
@@ -1104,7 +1163,7 @@ const IdeatathonPage = () => {
             </motion.a>
 
             <motion.a
-              href="tel:+919310103190"
+              href="tel:+917986613334"
               className="group bg-gradient-to-br from-blue-600/20 to-indigo-600/20 p-6 rounded-2xl border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 flex items-center gap-4 hover-glow"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1114,7 +1173,7 @@ const IdeatathonPage = () => {
               <Phone className="w-8 h-8 text-blue-400 group-hover:scale-110 transition-transform" />
               <div>
                 <h3 className="font-bold">Call Us</h3>
-                <p className="text-gray-400 text-sm">+91 9310103190</p>
+                <p className="text-gray-400 text-sm">+91 7986613334</p>
               </div>
             </motion.a>
 
@@ -1164,7 +1223,7 @@ const IdeatathonPage = () => {
               <div className="flex space-x-4">
                 {[
                   { icon: <Mail className="w-5 h-5" />, href: "mailto:tamboobaba@gmail.com" },
-                  { icon: <Phone className="w-5 h-5" />, href: "tel:+919310103190" },
+                  { icon: <Phone className="w-5 h-5" />, href: "tel:+917986613334" },
                   { icon: <ExternalLink className="w-5 h-5" />, href: "https://tamboobaba.com" }
                 ].map((social, index) => (
                   <motion.a
@@ -1269,6 +1328,7 @@ const IdeatathonPage = () => {
         <ChevronDown className="w-6 h-6 text-white rotate-180" />
       </motion.button>
     </div>
+    </>
   )
 }
 
