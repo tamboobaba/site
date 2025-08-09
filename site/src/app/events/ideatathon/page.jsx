@@ -27,16 +27,20 @@ import {
   Leaf,
   GraduationCap,
   Building,
-  Home
+  Home,
+  Upload,
+  Video,
+  FileText,
+  Instagram,
+  ArrowRight
 } from 'lucide-react'
 
 const IdeatathonPage = () => {
 
    const [isOpen, setIsOpen] = useState(false);
 
-  const menuItems = ['About', 'Tracks', 'Prizes', 'Judges', 'Partners', 'Contact'];
+  const menuItems = ['About', 'Timeline', 'Prizes', 'Judges', 'Partners', 'Contact'];
   const [mounted, setMounted] = useState(false)
-  const [activeTrack, setActiveTrack] = useState(0)
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
@@ -45,50 +49,7 @@ const IdeatathonPage = () => {
     setMounted(true)
   }, [])
 
-  if (!mounted) return null
-
-  const tracks = [
-    {
-      id: 1,
-      name: "Technology",
-      icon: <Brain className="w-8 h-8" />,
-      description: "AI, Automation, Digital Access, Tech for Good",
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-500/10"
-    },
-    {
-      id: 2,
-      name: "Entrepreneurship",
-      icon: <Building className="w-8 h-8" />,
-      description: "Startup Models, MSME Tech, Youth Enterprises",
-      color: "from-orange-500 to-red-500",
-      bgColor: "bg-orange-500/10"
-    },
-    {
-      id: 3,
-      name: "Healthcare",
-      icon: <Heart className="w-8 h-8" />,
-      description: "Mental Health, Accessibility, Diagnostics, Innovation",
-      color: "from-red-500 to-pink-500",
-      bgColor: "bg-red-500/10"
-    },
-    {
-      id: 4,
-      name: "Environment",
-      icon: <Leaf className="w-8 h-8" />,
-      description: "Climate, Waste Management, Renewable Solutions",
-      color: "from-green-500 to-emerald-500",
-      bgColor: "bg-green-500/10"
-    },
-    {
-      id: 5,
-      name: "Education",
-      icon: <GraduationCap className="w-8 h-8" />,
-      description: "Digital Learning, Teaching Aids, Inclusive Tools",
-      color: "from-purple-500 to-violet-500",
-      bgColor: "bg-purple-500/10"
-    }
-  ]
+  if (!mounted) return null;
 
   const judges = {
     Technology: [
@@ -129,12 +90,49 @@ const IdeatathonPage = () => {
     { name: "Devorious Technologies", ceo: "Harsahibjit Singh", logo: "/ideatathon/devo.png", url: "https://www.devorious.com/" },
     { name: "UNCLE Fab", ceo: "Nitesh Kumar", logo: "/ideatathon/unclefab.png", url: "https://www.unclefab.co/" },
     { name: "Biostack", ceo: "Mr. Sandeep Kumar", logo: "/ideatathon/biostack.png", url: "#" },
-    { name: "Humara Pandit", ceo: "Divyam Kalra", logo: "/ideatathon/humarapandit.png", url: "https://humarapandit.com/" },
+    { name: "Humara Pandit", ceo: "Divyam Kalra & Aditya Sharma", logo: "/ideatathon/humarapandit.png", url: "https://humarapandit.com/" },
     { name: "Bloc", ceo: "Rishabh", logo: "/ideatathon/bloc.png", url: "#" },
     { name: "Aerie Academy", ceo: "Parul Sharma", logo: "/ideatathon/aerie.png", url: "https://www.aerieacademy.com/" },
     { name: "Earthly Liquids", ceo: "Rupanshi Garg & Garvit Nama", logo: "/ideatathon/earthlyliquids.png", url: "#" },
     { name: "Lotus Multi-speciality Hospital", ceo: "Dr. Amit Sharma", logo: "/ideatathon/lotus.png", url: "https://www.lotushospital.co.in/" },
     { name: "Wave", ceo: "Aastha", logo: "/ideatathon/wave.png", url: "https://www.wave-length.in/" } // Added Wave Company
+  ]
+  
+  const communityPartners = [
+      { name: "Ascentia", secretary: "Rejinald Moses", logo: "/ideatathon/ascentia.png", url: "#" },
+      { name: "Apex Techno Warriors", secretary: "Umang Dokania", logo: "/ideatathon/apex.png", url: "#" },
+      { name: "CU Updates", secretary: "Ankul Kumar", logo: "/ideatathon/cuupdates.png", url: "#" },
+  ];
+
+  const rounds = [
+    {
+      round: 1,
+      title: "Ideation Phase",
+      icon: <FileText/>,
+      dates: "13 Jul - 06 Aug",
+      color: "blue"
+    },
+    {
+      round: 2,
+      title: "Ideation To Reality",
+      icon: <Video/>,
+      dates: "08 Aug - 12 Aug",
+      color: "purple"
+    },
+    {
+      round: 3,
+      title: "Grand Finale",
+      icon: <Trophy/>,
+      dates: "19 Aug 2025",
+      color: "pink"
+    }
+  ];
+
+  const participationRules = [
+    "Submit a video (max 3 min)",
+    "Include: Problem statement received, Your proposed solution, Feasibility & real-world use",
+    "Judging: Clarity, presentation, confidence & communication",
+    "Format: MP4 / MOV / YouTube/Drive link (view access ON)"
   ]
 
   const FloatingParticles = () => (
@@ -239,7 +237,7 @@ const IdeatathonPage = () => {
         `}
       </script>
     </Head>
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-hidden pt-5">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-x-hidden pt-5">
       <FloatingParticles />
 
       {/* Navigation Bar */}
@@ -270,12 +268,10 @@ const IdeatathonPage = () => {
 
             {/* Register Button */}
             <a
-              href="https://unstop.com/o/DISMc2C?lb=Rljx3SsD&utm_medium=Share&utm_source=shortUrl"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#konfhubpayment"
               className="hidden md:inline px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-sm font-semibold hover:scale-105 transition-transform glow hover-glow"
             >
-              Register Now
+              Enroll for Second Round
             </a>
 
             {/* Hamburger Icon */}
@@ -317,22 +313,16 @@ const IdeatathonPage = () => {
                 </a>
               ))}
               <a
-                href="https://unstop.com/o/DISMc2C?lb=Rljx3SsD&utm_medium=Share&utm_source=shortUrl"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#konfhubpayment"
+                onClick={() => setIsOpen(false)}
                 className="mt-3 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-sm font-semibold text-center hover:scale-105 transition-transform"
               >
-                Register Now
+                Enroll for Second Round
               </a>
             </div>
           </div>
         )}
       </nav>
-
-      {/* Background Orbs
-      <GlowingOrb className="w-96 h-96 bg-blue-500/20 -top-48 -right-48" delay={0} />
-      <GlowingOrb className="w-64 h-64 bg-purple-500/20 top-1/2 -left-32" delay={1} />
-      <GlowingOrb className="w-80 h-80 bg-pink-500/20 bottom-0 right-1/4" delay={2} /> */}
 
       {/* Hero Section */}
       <motion.section
@@ -383,7 +373,7 @@ const IdeatathonPage = () => {
             India's boldest innovation challenge is here! Hosted at Chandigarh University and proudly organized by{" "}
             <a href="https://tamboobaba.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 font-bold hover:underline">
               Tamboo Baba
-            </a>, Ideat-a-thon is a stage for revolutionary ideas solving real-world challenges across 5 dynamic tracks.
+            </a>, Ideat-a-thon is a stage for revolutionary ideas solving real-world challenges.
           </motion.p>
 
           <motion.div
@@ -393,28 +383,27 @@ const IdeatathonPage = () => {
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
             <motion.a
-              href="https://unstop.com/o/DISMc2C?lb=Rljx3SsD&utm_medium=Share&utm_source=shortUrl"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#konfhubpayment"
               className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-bold text-lg overflow-hidden transform transition-all duration-300 hover:scale-105 glow hover-glow"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <span className="relative z-10 flex items-center gap-2">
-                Register Now <ExternalLink className="w-5 h-5" />
+                Enroll for Second Round <ExternalLink className="w-5 h-5" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.a>
 
             <motion.a
-              href="/ideatathon/IDEAT-A-THON_PPT_TEMPLATE.pptx"
-              download
+              href="https://unstop.com/hackathons/ideat-a-thon-chandigarh-university-1510924"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group px-8 py-4 border-2 border-gray-600 rounded-full font-bold text-lg hover:border-blue-400 transition-all duration-300 flex items-center gap-2 hover-glow"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Download className="w-5 h-5" />
-              Download Template
+              <Upload className="w-5 h-5" />
+              Upload Video
             </motion.a>
           </motion.div>
 
@@ -525,31 +514,23 @@ const IdeatathonPage = () => {
           viewport={{ once: true }}
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">Guidelines</h2>
-            <p className="text-lg text-gray-400">Important rules and regulations for participation</p>
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">Guidelines for Round 2</h2>
+            <p className="text-lg text-gray-400">Important rules for the video submission round</p>
           </div>
 
           <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50 hover-glow">
-            <h3 className="text-2xl font-bold mb-6 text-center">Participation Rules</h3>
             <div className="grid md:grid-cols-2 gap-6">
-              {[
-                "Team Size: 1 to 3 members",
-                "Choose only one track per team",
-                "Submit your solution using the official PPT template",
-                "No additional slides allowed in the final presentation",
-                "Solutions must be original – plagiarism leads to disqualification",
-                "On-ground attendance at Chandigarh University is mandatory"
-              ].map((rule, index) => (
+              {participationRules.map((rule, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-start gap-3"
+                  className="flex items-start gap-4"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-xs font-bold text-white">{index + 1}</span>
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Star className="w-4 h-4 text-white"/>
                   </div>
                   <p className="text-gray-300">{rule}</p>
                 </motion.div>
@@ -558,64 +539,60 @@ const IdeatathonPage = () => {
           </div>
         </motion.section>
 
-        {/* Tracks Section */}
+        {/* Timeline Section */}
         <motion.section
-          id="tracks"
-          className="mb-24"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+            id="timeline"
+            className="mb-24"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
         >
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Choose Your Track</h2>
-            <p className="text-lg text-gray-400">Teams must select ONE of the following innovation tracks</p>
-          </div>
+            <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Event Timeline</h2>
+                <p className="text-lg text-gray-400">The Journey to the Grand Finale</p>
+            </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {tracks.map((track, index) => (
-              <motion.div
-                key={track.id}
-                className={`relative p-6 rounded-2xl border-2 ${
-                  activeTrack === index
-                    ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-purple-500/20 glow'
-                    : 'border-gray-700 bg-gradient-to-br from-gray-800/50 to-gray-900/50 hover:border-gray-600 hover-glow'
-                }`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.02, rotateX: 5 }}
-              >
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${track.color} flex items-center justify-center mb-4 text-white`}>
-                  {track.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-2">{track.name}</h3>
-                <p className="text-gray-400 text-sm">{track.description}</p>
-                {activeTrack === index && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center"
-                  >
-                    <Star className="w-4 h-4 text-white" />
-                  </motion.div>
-                )}
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <motion.a
-              href="https://forms.gle/mXB5xjatndeT8QsV9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold hover:scale-105 transition-transform glow hover-glow"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <motion.div 
+                className="flex justify-between items-center"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ staggerChildren: 0.3 }}
             >
-              Select Your Track <ExternalLink className="w-4 h-4" />
-            </motion.a>
-          </div>
+                {rounds.map((round, index) => (
+                    <React.Fragment key={round.round}>
+                        <motion.div
+                            className="flex flex-col items-center text-center w-1/4"
+                            variants={{
+                                hidden: { opacity: 0, y: 50 },
+                                visible: { opacity: 1, y: 0 }
+                            }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <div className={`w-24 h-24 rounded-full bg-gradient-to-br from-${round.color}-500/20 to-${round.color}-500/10 border-2 border-${round.color}-500 flex items-center justify-center mb-4`}>
+                                <div className={`w-16 h-16 rounded-full bg-gradient-to-br from-${round.color}-500 to-${round.color}-700 flex items-center justify-center text-white text-3xl shadow-lg shadow-${round.color}-500/30`}>
+                                    {round.icon}
+                                </div>
+                            </div>
+                            <h3 className="text-xl font-bold text-white">{round.title}</h3>
+                            <p className={`font-semibold text-sm text-${round.color}-400`}>{`Round ${round.round}`}</p>
+                            <p className="text-gray-400 text-xs mt-2">{round.dates}</p>
+                        </motion.div>
+                        
+                        {index < rounds.length - 1 && (
+                            <motion.div 
+                                className="flex-1 h-1 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700"
+                                variants={{
+                                    hidden: { scaleX: 0, opacity: 0 },
+                                    visible: { scaleX: 1, opacity: 1 }
+                                }}
+                                style={{ transformOrigin: 'left' }}
+                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                            />
+                        )}
+                    </React.Fragment>
+                ))}
+            </motion.div>
         </motion.section>
 
         {/* Prizes Section */}
@@ -656,12 +633,13 @@ const IdeatathonPage = () => {
             ))}
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             <motion.div
               className="bg-gradient-to-br from-green-500/20 to-blue-500/20 p-6 rounded-2xl border border-green-500/30 hover-glow"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
             >
               <h4 className="text-xl font-bold mb-2 flex items-center gap-2">
                 <Award className="w-6 h-6 text-green-400" />
@@ -669,12 +647,27 @@ const IdeatathonPage = () => {
               </h4>
               <p className="text-gray-300">🎁 Goodies + Swag Kits for all finalists</p>
             </motion.div>
+            
+            <motion.div
+              className="bg-gradient-to-br from-pink-500/20 to-orange-500/20 p-6 rounded-2xl border border-pink-500/30 hover-glow"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <h4 className="text-xl font-bold mb-2 flex items-center gap-2">
+                <Award className="w-6 h-6 text-pink-400" />
+                Insta Icon Award
+              </h4>
+              <p className="text-gray-300">🏆 Recognition for creative social media presence.</p>
+            </motion.div>
 
             <motion.div
               className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-6 rounded-2xl border border-purple-500/30 hover-glow"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
             >
               <h4 className="text-xl font-bold mb-2 flex items-center gap-2">
                 <Star className="w-6 h-6 text-purple-400" />
@@ -682,6 +675,30 @@ const IdeatathonPage = () => {
               </h4>
               <p className="text-gray-300">📜 Participation Certificates for all registered teams</p>
             </motion.div>
+          </div>
+        </motion.section>
+
+        <motion.section 
+          id="konfhubpayment" 
+          className="mb-24 scroll-mt-20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Register for Round 2</h2>
+            <p className="text-lg text-gray-400">Secure your spot in the next phase of the Ideat-a-thon!</p>
+          </div>
+          <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-gray-700/50 shadow-lg shadow-purple-500/10">
+            <iframe
+              src="https://konfhub.com/widget/round-2-ideatathon?desc=true&ticketId=55586&secondaryBg=1F2937&isRTL=true&ticketBg=111827&borderCl=1F2937&bg=000000&fontColor=D1D5DB&ticketCl=60A5FA&btnColor=7C3AED&fontFamily=Prompt&borderRadius=10"
+              id="konfhub-widget"
+              title="Register for Round 2 Ideatathon"
+              width="100%"
+              height="500"
+              style={{ border: 'none' }}
+            >
+            </iframe>
           </div>
         </motion.section>
 
@@ -822,156 +839,205 @@ const IdeatathonPage = () => {
         </motion.section>
 
         {/* Hosted By Section - Vertical Layout */}
-<motion.section
-  className="mb-24"
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: true }}
->
-  <div className="flex flex-col items-center">
-    {/* Header */}
-    <div className="text-center mb-8">
-      <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-        Hosted By
-      </h2>
-      <p className="text-lg text-gray-400">C Square Chandigarh University</p>
-    </div>
+        <motion.section
+          className="mb-24"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex flex-col items-center">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                Hosted By
+              </h2>
+              <p className="text-lg text-gray-400">C Square Chandigarh University</p>
+            </div>
 
-    {/* Spacer */}
-    <div className="h-8"></div>
+            {/* Spacer */}
+            <div className="h-8"></div>
 
-    {/* Logo Card */}
-    <motion.div
-      className="p-8 rounded-xl border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-[#111827] text-center group w-full max-w-xs"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3 }}
-      whileHover={{ scale: 1.04, y: -5 }}
-    >
-      <a
-        href="https://in.linkedin.com/company/csquare-club"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block"
-      >
-        <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center p-2">
-          <Image
-            src="/ideatathon/csquare.png"
-            alt="C Square logo"
-            width={80}
-            height={80}
-            className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
-          />
-        </div>
-        <h3 className="font-bold text-xl text-white group-hover:text-blue-400 transition-colors">
-          C Square
-        </h3>
-      </a>
-    </motion.div>
-  </div>
-</motion.section>
-{/* Event Partner Section */}
-<motion.section
-  className="mb-24"
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: true }}
->
-  <div className="flex flex-col items-center">
-    {/* Header */}
-    <div className="text-center mb-8">
-      <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-red-400 to-orange-500 bg-clip-text text-transparent">
-        Event Partner
-      </h2>
-      <p className="text-lg text-gray-400">Ascent Circle</p>
-    </div>
+            {/* Logo Card */}
+            <motion.div
+              className="p-8 rounded-xl border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-[#111827] text-center group w-full max-w-xs"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.04, y: -5 }}
+            >
+              <a
+                href="https://in.linkedin.com/company/csquare-club"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center p-2">
+                  <Image
+                    src="/ideatathon/csquare.png"
+                    alt="C Square logo"
+                    width={80}
+                    height={80}
+                    className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <h3 className="font-bold text-xl text-white group-hover:text-blue-400 transition-colors">
+                  C Square
+                </h3>
+              </a>
+            </motion.div>
+          </div>
+        </motion.section>
+        
+        {/* Event Partner Section */}
+        <motion.section
+          className="mb-24"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex flex-col items-center">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-red-400 to-orange-500 bg-clip-text text-transparent">
+                Event Partner
+              </h2>
+              <p className="text-lg text-gray-400">Ascent Circle</p>
+            </div>
 
-    {/* Spacer */}
-    <div className="h-8"></div>
+            {/* Spacer */}
+            <div className="h-8"></div>
 
-    {/* Logo Card */}
-    <motion.div
-      className="p-8 rounded-xl border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-[#111827] text-center group w-full max-w-xs"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3 }}
-      whileHover={{ scale: 1.04, y: -5 }}
-    >
-      <a
-        href="https://ascentcircle.web.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block"
-      >
-        <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center p-2">
-          <Image
-            src="/ideatathon/ascentcircle.png"
-            alt="Ascent Circle logo"
-            width={80}
-            height={80}
-            className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
-          />
-        </div>
-        <h3 className="font-bold text-xl text-white group-hover:text-red-400 transition-colors">
-          Ascent Circle
-        </h3>
-      </a>
-    </motion.div>
-  </div>
-</motion.section>
+            {/* Logo Card */}
+            <motion.div
+              className="p-8 rounded-xl border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-[#111827] text-center group w-full max-w-xs"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.04, y: -5 }}
+            >
+              <a
+                href="https://ascentcircle.web.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center p-2">
+                  <Image
+                    src="/ideatathon/ascentcircle.png"
+                    alt="Ascent Circle logo"
+                    width={80}
+                    height={80}
+                    className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <h3 className="font-bold text-xl text-white group-hover:text-red-400 transition-colors">
+                  Ascent Circle
+                </h3>
+              </a>
+            </motion.div>
+          </div>
+        </motion.section>
 
-{/* Platform Collaborator Section */}
-<motion.section
-  className="mb-24"
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: true }}
->
-  <div className="flex flex-col items-center">
-    {/* Header */}
-    <div className="text-center mb-8">
-      <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-        Platform Collaborator
-      </h2>
-      <p className="text-lg text-gray-400">EventEye</p>
-    </div>
+        {/* Platform Collaborator Section */}
+        <motion.section
+          className="mb-24"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex flex-col items-center">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+                Platform Collaborator
+              </h2>
+              <p className="text-lg text-gray-400">EventEye</p>
+            </div>
 
-    {/* Spacer */}
-    <div className="h-8"></div>
+            {/* Spacer */}
+            <div className="h-8"></div>
 
-    {/* Logo Card */}
-    <motion.div
-      className="p-8 rounded-xl border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-[#111827] text-center group w-full max-w-xs"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3 }}
-      whileHover={{ scale: 1.04, y: -5 }}
-    >
-      <a
-        href="https://www.eventeye.in/events/ideatathon-chandigarh-university-2025"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block"
-      >
-        <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center p-2">
-          <Image
-            src="/ideatathon/eventeye.png"
-            alt="EventEye logo"
-            width={80}
-            height={80}
-            className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
-          />
-        </div>
-        <h3 className="font-bold text-xl text-white group-hover:text-green-400 transition-colors">
-          Eventeye
-        </h3>
-      </a>
-    </motion.div>
-  </div>
-</motion.section>
+            {/* Logo Card */}
+            <motion.div
+              className="p-8 rounded-xl border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-[#111827] text-center group w-full max-w-xs"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.04, y: -5 }}
+            >
+              <a
+                href="https://www.eventeye.in/events/ideatathon-chandigarh-university-2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center p-2">
+                  <Image
+                    src="/ideatathon/eventeye.png"
+                    alt="EventEye logo"
+                    width={80}
+                    height={80}
+                    className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <h3 className="font-bold text-xl text-white group-hover:text-green-400 transition-colors">
+                  Eventeye
+                </h3>
+              </a>
+            </motion.div>
+          </div>
+        </motion.section>
+        
+        {/* Community Partners Section */}
+        <motion.section
+          className="mb-24"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
+              Community Partners
+            </h2>
+            <p className="text-lg text-gray-400">Our wonderful community collaborators</p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6">
+            {communityPartners.map((partner, index) => (
+              <motion.div
+                key={index}
+                className="p-6 rounded-xl border border-gray-800 hover:border-gray-600 transition-all duration-300 bg-[#111827] text-center group"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.04, y: -5 }}
+              >
+                <a href={partner.url} target="_blank" rel="noopener noreferrer" className="block">
+                    <div className="w-20 h-20 mx-auto mb-4 rounded-2xl overflow-hidden bg-gray-900 flex items-center justify-center">
+                      <Image
+                        src={partner.logo}
+                        alt={`${partner.name} logo`}
+                        width={64}
+                        height={64}
+                        className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-110"
+                        onError={(e) => {
+                          e.target.src = `https://ui-avatars.com/api/?name=${partner.name.split(' ')[0]}&background=random&color=fff&size=64`;
+                        }}
+                      />
+                    </div>
+                    <h3 className="font-bold text-sm text-white group-hover:text-blue-400 transition-colors">
+                      {partner.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 mt-1">Secretary: {partner.secretary}</p>
+                  </a>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
 
         {/* Partners Section (now "Supported By") */}
         <motion.section
@@ -1065,9 +1131,7 @@ const IdeatathonPage = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             <motion.a
-              href="https://unstop.com/o/DISMc2C?lb=Rljx3SsD&utm_medium=Share&utm_source=shortUrl"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#konfhubpayment"
               className="group bg-gradient-to-br from-blue-600/20 to-purple-600/20 p-8 rounded-2xl border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 text-center hover-glow"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1076,13 +1140,13 @@ const IdeatathonPage = () => {
               whileHover={{ scale: 1.02, y: -5 }}
             >
               <Users className="w-12 h-12 text-blue-400 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold mb-2">Register Now</h3>
+              <h3 className="text-xl font-bold mb-2">Enroll for Second Round</h3>
               <p className="text-gray-400 mb-4">Join the innovation challenge</p>
               <ExternalLink className="w-5 h-5 mx-auto text-blue-400" />
             </motion.a>
 
             <motion.a
-              href="https://forms.gle/mXB5xjatndeT8QsV9"
+              href="https://unstop.com/hackathons/ideat-a-thon-chandigarh-university-1510924"
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-gradient-to-br from-green-600/20 to-emerald-600/20 p-8 rounded-2xl border border-green-500/30 hover:border-green-400/50 transition-all duration-300 text-center hover-glow"
@@ -1092,9 +1156,9 @@ const IdeatathonPage = () => {
               transition={{ delay: 0.2 }}
               whileHover={{ scale: 1.02, y: -5 }}
             >
-              <Target className="w-12 h-12 text-green-400 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold mb-2">Select Track</h3>
-              <p className="text-gray-400 mb-4">Choose your innovation domain</p>
+              <Video className="w-12 h-12 text-green-400 mx-auto mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="text-xl font-bold mb-2">Upload Video</h3>
+              <p className="text-gray-400 mb-4">Submit your video for Round 2</p>
               <ExternalLink className="w-5 h-5 mx-auto text-green-400" />
             </motion.a>
 
@@ -1131,7 +1195,7 @@ const IdeatathonPage = () => {
 
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             <motion.a
-              href="mailto:tamboobaba@gmail.com"
+              href="mailto:info@tamboobaba.com"
               className="group bg-gradient-to-br from-red-600/20 to-pink-600/20 p-6 rounded-2xl border border-red-500/30 hover:border-red-400/50 transition-all duration-300 flex items-center gap-4 hover-glow"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1141,12 +1205,12 @@ const IdeatathonPage = () => {
               <Mail className="w-8 h-8 text-red-400 group-hover:scale-110 transition-transform" />
               <div>
                 <h3 className="font-bold">Email</h3>
-                <p className="text-gray-400 text-sm">tamboobaba@gmail.com</p>
+                <p className="text-gray-400 text-sm">info@tamboobaba.com</p>
               </div>
             </motion.a>
 
             <motion.a
-              href="https://chat.whatsapp.com/IcgctN4ySl13ftCJtszLr0"
+              href="https://chat.whatsapp.com/JIlW1QAVC9eDXBniGOLO3x"
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-gradient-to-br from-green-600/20 to-emerald-600/20 p-6 rounded-2xl border border-green-500/30 hover:border-green-400/50 transition-all duration-300 flex items-center gap-4 hover-glow"
@@ -1222,7 +1286,7 @@ const IdeatathonPage = () => {
               </p>
               <div className="flex space-x-4">
                 {[
-                  { icon: <Mail className="w-5 h-5" />, href: "mailto:tamboobaba@gmail.com" },
+                  { icon: <Mail className="w-5 h-5" />, href: "mailto:info@tamboobaba.com" },
                   { icon: <Phone className="w-5 h-5" />, href: "tel:+917986613334" },
                   { icon: <ExternalLink className="w-5 h-5" />, href: "https://tamboobaba.com" }
                 ].map((social, index) => (
@@ -1250,10 +1314,10 @@ const IdeatathonPage = () => {
               <h4 className="text-lg font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2">
                 {[
-                  { name: "Register Now", href: "https://unstop.com/o/DISMc2C?lb=Rljx3SsD&utm_medium=Share&utm_source=shortUrl" },
-                  { name: "Select Track", href: "https://forms.gle/mXB5xjatndeT8QsV9" },
-                  { name: "Download Template", href: "/ideatathon/IDEAT-A-THON_PPT_TEMPLATE.pptx" },
-                  { name: "Contact Us", href: "mailto:tamboobaba@gmail.com" }
+                  { name: "Enroll for Second Round", href: "#konfhubpayment" },
+                  { name: "Upload Video", href: "https://unstop.com/hackathons/ideat-a-thon-chandigarh-university-1510924" },
+                  // { name: "Download Template", href: "/ideatathon/IDEAT-A-THON_PPT_TEMPLATE.pptx" },
+                  { name: "Contact Us", href: "mailto:info@tamboobaba.com" }
                 ].map((link, index) => (
                   <li key={index}>
                     <a
@@ -1292,7 +1356,7 @@ const IdeatathonPage = () => {
                 </li>
                 <li className="flex items-center gap-2">
                   <Users className="w-4 h-4 text-purple-400" />
-                  5 Innovation Tracks
+                  3 Rounds of Innovation
                 </li>
               </ul>
             </motion.div>
