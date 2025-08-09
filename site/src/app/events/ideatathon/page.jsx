@@ -656,11 +656,19 @@ const IdeatathonPage = () => {
               transition={{ delay: 0.2 }}
             >
               <h4 className="text-xl font-bold mb-2 flex items-center gap-2">
-                <Award className="w-6 h-6 text-pink-400" />
-                Insta Icon Award
+                <a
+                  href="https://www.instagram.com/tamboobaba?igsh=MWNtejh2Y2ZsOXI4bQ=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:underline"
+                >
+                  <Award className="w-6 h-6 text-pink-400" />
+                  Insta Icon Award
+                </a>
               </h4>
               <p className="text-gray-300">🏆 Recognition for creative social media presence.</p>
             </motion.div>
+
 
             <motion.div
               className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-6 rounded-2xl border border-purple-500/30 hover-glow"
@@ -678,6 +686,8 @@ const IdeatathonPage = () => {
           </div>
         </motion.section>
 
+
+
         <motion.section 
           id="konfhubpayment" 
           className="mb-24 scroll-mt-20"
@@ -686,9 +696,17 @@ const IdeatathonPage = () => {
           viewport={{ once: true }}
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Register for Round 2</h2>
-            <p className="text-lg text-gray-400">Secure your spot in the next phase of the Ideat-a-thon!</p>
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+              Register for Round 2
+            </h2>
+            <p className="text-lg text-gray-400">
+              Secure your spot in the next phase of the Ideat-a-thon!
+            </p>
+            <p className="mt-4 text-red-400 font-semibold text-lg">
+              ⚠️ Only shortlisted participants for Round 2 should proceed with payment.
+            </p>
           </div>
+
           <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-gray-700/50 shadow-lg shadow-purple-500/10">
             <iframe
               src="https://konfhub.com/widget/round-2-ideatathon?desc=true&ticketId=55586&secondaryBg=1F2937&isRTL=true&ticketBg=111827&borderCl=1F2937&bg=000000&fontColor=D1D5DB&ticketCl=60A5FA&btnColor=7C3AED&fontFamily=Prompt&borderRadius=10"
@@ -697,10 +715,10 @@ const IdeatathonPage = () => {
               width="100%"
               height="500"
               style={{ border: 'none' }}
-            >
-            </iframe>
+            ></iframe>
           </div>
         </motion.section>
+
 
         {/* Judges Section */}
         <motion.section
