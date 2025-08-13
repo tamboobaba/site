@@ -892,7 +892,7 @@ const IdeatathonPage = () => {
               >
                 <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden bg-gray-900 flex items-center justify-center p-2">
                   <Image
-                    src="/ideatathon/csquare.png"
+                    src="/ideatathon/csquare.jpg"
                     alt="C Square logo"
                     width={80}
                     height={80}
