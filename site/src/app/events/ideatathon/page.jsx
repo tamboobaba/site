@@ -75,7 +75,7 @@ const IdeatathonPage = () => {
 
   // New data arrays for Hosted By, Event Partner, and Platform Collaborator
   const hostedBy = [
-    { name: "C Square", logo: "/ideatathon/csquare.png", url: "#" }
+    { name: "C Square", logo: "/ideatathon/csquare.jpg", url: "#" }
   ];
 
   const eventPartner = [
