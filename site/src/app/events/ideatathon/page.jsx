@@ -87,13 +87,13 @@ const IdeatathonPage = () => {
   ];
 
   const partners = [
-    { name: "Devorious Technologies", ceo: "", logo: "/ideatathon/devo.png", url: "https://www.devorious.com/" },
     { name: "UNCLE Fab", ceo: "Nitesh Kumar", logo: "/ideatathon/unclefab.png", url: "https://www.unclefab.co/" },
     { name: "Biostack", ceo: "Mr. Sandeep Kumar", logo: "/ideatathon/biostack.png", url: "#" },
     { name: "Humara Pandit", ceo: "Divyam Kalra & Aditya Sharma", logo: "/ideatathon/humarapandit.png", url: "https://humarapandit.com/" },
     { name: "Bloc", ceo: "Rishabh", logo: "/ideatathon/bloc.png", url: "#" },
     { name: "Aerie Academy", ceo: "Parul Sharma", logo: "/ideatathon/aerie.png", url: "https://www.aerieacademy.com/" },
     { name: "Earthly Liquids", ceo: "Rupanshi Garg & Garvit Nama", logo: "/ideatathon/earthlyliquids.png", url: "#" },
+    { name: "Devorious Technologies", ceo: "", logo: "/ideatathon/devo.png", url: "https://www.devorious.com/" },
     { name: "Lotus Multi-speciality Hospital", ceo: "Dr. Amit Sharma", logo: "/ideatathon/lotus.png", url: "https://www.lotushospital.co.in/" },
     { name: "Wave", ceo: "Aastha", logo: "/ideatathon/wave.png", url: "https://www.wave-length.in/" } // Added Wave Company
   ]
@@ -1631,9 +1631,9 @@ const IdeatathonPage = () => {
               © 2025 Tamboo Baba. All rights reserved. |
               <span className="text-blue-400 ml-1">Ideat-a-thon 2025 - Ignite. Innovate. Impact.</span>
             </p>
-            <p className="text-gray-500 text-sm mt-2">
+            {/* <p className="text-gray-500 text-sm mt-2">
               Website developed by <a href="https://devorious.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">Devorious Technologies</a>
-            </p>
+            </p> */}
           </motion.div>
         </div>
       </footer>
