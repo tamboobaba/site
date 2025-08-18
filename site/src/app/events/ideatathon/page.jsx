@@ -1314,6 +1314,123 @@ const IdeatathonPage = () => {
           </div>
         </motion.section> */}
 
+
+
+<motion.section
+  id="sponsors"
+  className="mb-24"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true }}
+>
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div
+      className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50 hover-glow"
+      whileHover={{ scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+    >
+      <h3 className="text-2xl font-bold mb-6 text-center">Our Generous Sponsors</h3>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
+        {/* Sponsor 1 */}
+        <motion.div
+          className="flex flex-col items-center text-center w-full"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
+            <img
+              src="/ideatathon/physicswallah.jpg"
+              alt="Physics Wallah Logo"
+              className="w-full h-auto object-contain rounded-lg"
+            />
+          </div>
+          <p className="text-lg font-semibold text-gray-200">Physics Wallah </p>
+        </motion.div>
+
+        {/* Sponsor 2 */}
+        <motion.div
+          className="flex flex-col items-center text-center w-full"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
+            <img
+              src="/ideatathon/truscholar.jpg"
+              alt="Tru Scholar Logo"
+              className="w-full h-auto object-contain rounded-lg"
+            />
+          </div>
+          <p className="text-lg font-semibold text-gray-200">Tru Scholar</p>
+        </motion.div>
+
+        {/* Sponsor 3 */}
+        <motion.div
+          className="flex flex-col items-center text-center w-full"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
+          <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
+            <img
+              src="/ideatathon/unstop.jpg"
+              alt="Unstop Logo"
+              className="w-full h-auto object-contain rounded-lg"
+            />
+          </div>
+          <p className="text-lg font-semibold text-gray-200">Unstop</p>
+        </motion.div>
+
+        {/* Sponsor 4 */}
+        <motion.div
+          className="flex flex-col items-center text-center w-full"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
+            <img
+              src="/ideatathon/computerx.jpg"
+              alt="Computer X Logo"
+              className="w-full h-auto object-contain rounded-lg"
+            />
+          </div>
+          <p className="text-lg font-semibold text-gray-200">Computer X</p>
+        </motion.div>
+
+        {/* Sponsor 5 */}
+        <motion.div
+          className="flex flex-col items-center text-center w-full"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+        >
+          <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
+            <img
+              src="/ideatathon/sipsipspot.jpg"
+              alt="Sip Sip Spot Logo"
+              className="w-full h-auto object-contain rounded-lg"
+            />
+          </div>
+          <p className="text-lg font-semibold text-gray-200">Sip Sip Spot</p>
+        </motion.div>
+      </div>
+    </motion.div>
+  </div>
+</motion.section>
+
+
+
+
+
+
         {/* Contact Section */}
         <motion.section
           id="contact"
