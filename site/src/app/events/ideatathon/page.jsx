@@ -754,7 +754,7 @@ const IdeatathonPage = () => {
         >
           <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50">
             <img 
-              src="/tshirt-image.png" 
+              src="/ideatathon/tshirt.jpg"
               alt="Official Event T-shirt" 
               className="w-full h-auto object-contain rounded-lg"
             />
