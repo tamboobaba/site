@@ -267,12 +267,12 @@ const IdeatathonPage = () => {
             </div>
 
             {/* Register Button */}
-            <a
+            {/* <a
               href="#konfhubpayment"
               className="hidden md:inline px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-sm font-semibold hover:scale-105 transition-transform glow hover-glow"
             >
               Enroll for Second Round
-            </a>
+            </a> */}
 
             {/* Hamburger Icon */}
             <div className="md:hidden">
@@ -312,13 +312,13 @@ const IdeatathonPage = () => {
                   {item}
                 </a>
               ))}
-              <a
+              {/* <a
                 href="#konfhubpayment"
                 onClick={() => setIsOpen(false)}
                 className="mt-3 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-sm font-semibold text-center hover:scale-105 transition-transform"
               >
                 Enroll for Second Round
-              </a>
+              </a> */}
             </div>
           </div>
         )}
@@ -376,7 +376,7 @@ const IdeatathonPage = () => {
             </a>, Ideat-a-thon is a stage for revolutionary ideas solving real-world challenges.
           </motion.p>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 1.4 }}
@@ -405,7 +405,7 @@ const IdeatathonPage = () => {
               <Upload className="w-5 h-5" />
               Upload Video
             </motion.a>
-          </motion.div>
+          </motion.div> */}
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -507,7 +507,7 @@ const IdeatathonPage = () => {
         </motion.section>
 
         {/* Guidelines Section */}
-        <motion.section
+        {/* <motion.section
           className="mb-24"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -537,7 +537,7 @@ const IdeatathonPage = () => {
               ))}
             </div>
           </div>
-        </motion.section>
+        </motion.section> */}
 
         {/* Timeline Section */}
         <motion.section
@@ -688,7 +688,7 @@ const IdeatathonPage = () => {
 
 
 
-        <motion.section 
+        {/* <motion.section 
           id="konfhubpayment" 
           className="mb-24 scroll-mt-20"
           initial={{ opacity: 0 }}
@@ -717,7 +717,123 @@ const IdeatathonPage = () => {
               style={{ border: 'none' }}
             ></iframe>
           </div>
-        </motion.section>
+        </motion.section> */}
+
+
+
+
+
+
+
+
+
+
+        <motion.section
+  id="merchandise"
+  className="mb-24"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true }}
+>
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div 
+      className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700/50 hover-glow"
+      whileHover={{ scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+    >
+      <h3 className="text-2xl font-bold mb-6 text-center">Official Event Merchandise</h3>
+      
+      <div className="flex flex-col md:flex-row items-center gap-8">
+        {/* T-shirt Image */}
+        <motion.div 
+          className="flex-1"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50">
+            <img 
+              src="/tshirt-image.png" 
+              alt="Official Event T-shirt" 
+              className="w-full h-auto object-contain rounded-lg"
+            />
+          </div>
+        </motion.div>
+        
+        {/* Details */}
+        <motion.div 
+          className="flex-1"
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+        >
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-xl font-semibold mb-2">Premium Event T-shirt</h4>
+              <p className="text-gray-300">Wear the official merchandise and showcase your participation!</p>
+            </div>
+            
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xs font-bold text-white">✓</span>
+                </div>
+                <p className="text-gray-300">Premium 100% cotton</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xs font-bold text-white">✓</span>
+                </div>
+                <p className="text-gray-300">High-quality print</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center flex-shrink-0">
+                  <span className="text-xs font-bold text-white">✓</span>
+                </div>
+                <p className="text-gray-300">Comfortable fit</p>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-4">
+              <p className="text-2xl font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+                ₹239 + GST
+              </p>
+            </div>
+            
+            <motion.a
+              href="https://unclefab.co/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-green-500 to-blue-600 text-white font-medium hover:shadow-lg hover:shadow-green-500/20 transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Buy Now
+            </motion.a>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  </div>
+</motion.section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         {/* Judges Section */}
@@ -1136,7 +1252,7 @@ const IdeatathonPage = () => {
         </motion.section>
 
         {/* Registration Links Section */}
-        <motion.section
+        {/* <motion.section
           className="mb-24"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -1196,7 +1312,7 @@ const IdeatathonPage = () => {
               <Download className="w-5 h-5 mx-auto text-purple-400" />
             </motion.a>
           </div>
-        </motion.section>
+        </motion.section> */}
 
         {/* Contact Section */}
         <motion.section
@@ -1332,8 +1448,8 @@ const IdeatathonPage = () => {
               <h4 className="text-lg font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2">
                 {[
-                  { name: "Enroll for Second Round", href: "#konfhubpayment" },
-                  { name: "Upload Video", href: "https://unstop.com/hackathons/ideat-a-thon-chandigarh-university-1510924" },
+                  // { name: "Enroll for Second Round", href: "#konfhubpayment" },
+                  // { name: "Upload Video", href: "https://unstop.com/hackathons/ideat-a-thon-chandigarh-university-1510924" },
                   // { name: "Download Template", href: "/ideatathon/IDEAT-A-THON_PPT_TEMPLATE.pptx" },
                   { name: "Contact Us", href: "mailto:info@tamboobaba.com" }
                 ].map((link, index) => (
