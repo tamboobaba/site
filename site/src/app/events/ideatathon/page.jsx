@@ -87,7 +87,7 @@ const IdeatathonPage = () => {
   ];
 
   const partners = [
-    { name: "Devorious Technologies", ceo: "Harsahibjit Singh", logo: "/ideatathon/devo.png", url: "https://www.devorious.com/" },
+    { name: "Devorious Technologies", ceo: "", logo: "/ideatathon/devo.png", url: "https://www.devorious.com/" },
     { name: "UNCLE Fab", ceo: "Nitesh Kumar", logo: "/ideatathon/unclefab.png", url: "https://www.unclefab.co/" },
     { name: "Biostack", ceo: "Mr. Sandeep Kumar", logo: "/ideatathon/biostack.png", url: "#" },
     { name: "Humara Pandit", ceo: "Divyam Kalra & Aditya Sharma", logo: "/ideatathon/humarapandit.png", url: "https://humarapandit.com/" },
@@ -1332,7 +1332,7 @@ const IdeatathonPage = () => {
       <h3 className="text-2xl font-bold mb-6 text-center">Our Generous Sponsors</h3>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
-        {/* Sponsor 1 */}
+        {/* Sponsor 1 - Physics Wallah */}
         <motion.div
           className="flex flex-col items-center text-center w-full"
           initial={{ opacity: 0, y: 20 }}
@@ -1340,17 +1340,19 @@ const IdeatathonPage = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
-            <img
-              src="/ideatathon/physicswallah.jpg"
-              alt="Physics Wallah Logo"
-              className="w-full h-auto object-contain rounded-lg"
-            />
-          </div>
-          <p className="text-lg font-semibold text-gray-200">Physics Wallah </p>
+          <a href="https://www.pw.live/" target="_blank" rel="noopener noreferrer" className="w-full">
+            <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
+              <img
+                src="/ideatathon/physicswallah.jpg"
+                alt="Physics Wallah Logo"
+                className="w-full h-auto object-contain rounded-lg"
+              />
+            </div>
+            <p className="text-lg font-semibold text-gray-200">Physics Wallah</p>
+          </a>
         </motion.div>
 
-        {/* Sponsor 2 */}
+        {/* Sponsor 2 - Tru Scholar */}
         <motion.div
           className="flex flex-col items-center text-center w-full"
           initial={{ opacity: 0, y: 20 }}
@@ -1358,17 +1360,19 @@ const IdeatathonPage = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
-            <img
-              src="/ideatathon/truscholar.jpg"
-              alt="Tru Scholar Logo"
-              className="w-full h-auto object-contain rounded-lg"
-            />
-          </div>
-          <p className="text-lg font-semibold text-gray-200">Tru Scholar</p>
+          <a href="https://share.google/BJ19jMmkGHFG5PeTi" target="_blank" rel="noopener noreferrer" className="w-full">
+            <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
+              <img
+                src="/ideatathon/truscholar.jpg"
+                alt="Tru Scholar Logo"
+                className="w-full h-auto object-contain rounded-lg"
+              />
+            </div>
+            <p className="text-lg font-semibold text-gray-200">Tru Scholar</p>
+          </a>
         </motion.div>
 
-        {/* Sponsor 3 */}
+        {/* Sponsor 3 - Unstop */}
         <motion.div
           className="flex flex-col items-center text-center w-full"
           initial={{ opacity: 0, y: 20 }}
@@ -1376,17 +1380,19 @@ const IdeatathonPage = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
-            <img
-              src="/ideatathon/unstop.jpg"
-              alt="Unstop Logo"
-              className="w-full h-auto object-contain rounded-lg"
-            />
-          </div>
-          <p className="text-lg font-semibold text-gray-200">Unstop</p>
+          <a href="https://share.google/ntUXICP0ITkjvOOsf" target="_blank" rel="noopener noreferrer" className="w-full">
+            <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
+              <img
+                src="/ideatathon/unstop.jpg"
+                alt="Unstop Logo"
+                className="w-full h-auto object-contain rounded-lg"
+              />
+            </div>
+            <p className="text-lg font-semibold text-gray-200">Unstop</p>
+          </a>
         </motion.div>
 
-        {/* Sponsor 4 */}
+        {/* Sponsor 4 - Computer X */}
         <motion.div
           className="flex flex-col items-center text-center w-full"
           initial={{ opacity: 0, y: 20 }}
@@ -1394,17 +1400,19 @@ const IdeatathonPage = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
-            <img
-              src="/ideatathon/computerx.jpg"
-              alt="Computer X Logo"
-              className="w-full h-auto object-contain rounded-lg"
-            />
-          </div>
-          <p className="text-lg font-semibold text-gray-200">Computer X</p>
+          <a href="https://unstop.com/" target="_blank" rel="noopener noreferrer" className="w-full">
+            <div className="bg-gray-800/30 p-4 rounded-xl border border-gray-700/50 w-full mb-4">
+              <img
+                src="/ideatathon/computerx.jpg"
+                alt="Computer X Logo"
+                className="w-full h-auto object-contain rounded-lg"
+              />
+            </div>
+            <p className="text-lg font-semibold text-gray-200">Computer X</p>
+          </a>
         </motion.div>
 
-        {/* Sponsor 5 */}
+        {/* Sponsor 5 - Sip Sip Spot (No link) */}
         <motion.div
           className="flex flex-col items-center text-center w-full"
           initial={{ opacity: 0, y: 20 }}
@@ -1425,7 +1433,6 @@ const IdeatathonPage = () => {
     </motion.div>
   </div>
 </motion.section>
-
 
 
 
