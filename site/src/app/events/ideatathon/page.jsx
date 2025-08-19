@@ -803,7 +803,7 @@ const IdeatathonPage = () => {
             </div>
             
             <motion.a
-              href="https://unclefab.co/"
+              href="https://unclefab.co/product/68a3549ea9a056fa160198e1"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-green-500 to-blue-600 text-white font-medium hover:shadow-lg hover:shadow-green-500/20 transition-all"
