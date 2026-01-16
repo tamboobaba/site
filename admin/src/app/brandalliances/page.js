@@ -170,12 +170,6 @@ const generateAllUsersPDF = async (requests) => {
 };
 
 
-
-
-
-
-
-
 const generatePDF = async (request) => {
   const userIP = await getPublicIP(); // <-- fetch IP here
 

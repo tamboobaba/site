@@ -148,6 +148,7 @@ useEffect(() => {
           <button className="md:hidden text-2xl z-50" onClick={toggleMenu}>
             {isMenuOpen ? <FiX /> : <FiMenu />}
           </button>
+
         </div>
       </header>
 
@@ -177,16 +178,16 @@ useEffect(() => {
 
 
 {/* Hero Section */}
-<section className="min-h-screen flex items-center relative pt-24 overflow-hidden">
-  <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
-    {/* Text Content - Ensure proper z-index and spacing */}
-    <div ref={heroRef} className="lg:w-1/2 relative z-20"> {/* Added z-20 */}
-      <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6">
-        <span className="text-yellow-400">Redefining</span> Event Experiences
-      </h1>
-      <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl blur-[0.5px]">
-        Premium event management solutions that transform ordinary gatherings into unforgettable experiences.
-      </p>
+  <section className="min-h-screen flex items-center relative pt-24 overflow-hidden">
+    <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+      {/* Text Content - Ensure proper z-index and spacing */}
+      <div ref={heroRef} className="lg:w-1/2 relative z-20"> {/* Added z-20 */}
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6">
+          <span className="text-yellow-400">Redefining</span> Event Experiences
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl blur-[0.5px]">
+          Premium event management solutions that transform ordinary gatherings into unforgettable experiences.
+        </p>
 
       
       {/* Button Container - Added margin and z-index */}
@@ -199,39 +200,39 @@ useEffect(() => {
 </button>
 
 
-        <button
-          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-          className="bg-transparent hover:bg-white/10 border-2 border-white/20 text-white px-8 py-4 rounded-full font-medium transition-colors text-lg relative z-20 shadow-lg"
-        >
-           {/* Added shadow-lg */}
-          Contact Us
-        </button>
+          <button
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-transparent hover:bg-white/10 border-2 border-white/20 text-white px-8 py-4 rounded-full font-medium transition-colors text-lg relative z-20 shadow-lg"
+          >
+            {/* Added shadow-lg */}
+            Contact Us
+          </button>
+        </div>
+      </div>
+
+      {/* Image Content - Adjusted z-index */}
+      <div className="lg:w-1/2 mt-12 lg:mt-0">
+        <div className="relative aspect-square lg:aspect-video w-full max-w-2xl mx-auto">
+          {/* Replace with your actual image */}
+
+  <Image
+    src="/hero-image.png"
+    alt="Tamboo Baba Event Management"
+    width={800}
+    height={500}
+    className="w-full h-full object-cover rounded-2xl shadow-xl border-2 border-white/10"
+  />
+
+          {/* Decorative elements */}
+          <div className="absolute -inset-4 bg-yellow-400/10 rounded-2xl -z-10"></div>
+          <div className="absolute -top-6 -right-6 w-24 h-24 bg-purple-500/20 rounded-full blur-xl"></div>
+        </div>
       </div>
     </div>
-
-    {/* Image Content - Adjusted z-index */}
-    <div className="lg:w-1/2 mt-12 lg:mt-0">
-      <div className="relative aspect-square lg:aspect-video w-full max-w-2xl mx-auto">
-        {/* Replace with your actual image */}
-
-<Image
-  src="/hero-image.png"
-  alt="Tamboo Baba Event Management"
-  width={800}
-  height={500}
-  className="w-full h-full object-cover rounded-2xl shadow-xl border-2 border-white/10"
-/>
-
-        {/* Decorative elements */}
-        <div className="absolute -inset-4 bg-yellow-400/10 rounded-2xl -z-10"></div>
-        <div className="absolute -top-6 -right-6 w-24 h-24 bg-purple-500/20 rounded-full blur-xl"></div>
-      </div>
-    </div>
-  </div>
-  
-  {/* Hero Decoration - Ensure it stays behind content */}
-  <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-gray-950 to-transparent z-0"></div>
-</section>
+    
+    {/* Hero Decoration - Ensure it stays behind content */}
+    <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-gray-950 to-transparent z-0"></div>
+  </section>
 
 
 
